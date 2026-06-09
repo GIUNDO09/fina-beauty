@@ -82,6 +82,9 @@ const PRODUITS = [
   { id:38, nom:"Poudre de Nila Bleu — 50g", cat:"visage", prix:3000, photo:"images/poudre-nilableu.png", img:"💙", note:5.0, avis:19, badge:"best",
     desc:"Poudre de nila bleu pure (50g), qualité supérieure. La poudre de beauté traditionnelle du Maroc pour unifier le teint, atténuer les zones sombres et illuminer la peau. À utiliser en masque ou mélangée à ta routine. 100% naturelle." },
 
+  { id:39, nom:"Tirelire Artisanale en Bois", cat:"artisanat", prix:2500, photo:"images/tire-lire.png", img:"🪵", note:5.0, avis:8, badge:"new",
+    desc:"Tirelire artisanale en bois, gravée à la main. Forme hexagonale élégante avec motif laurier. Parfaite pour économiser ou offrir — un joli objet déco fait main." },
+
   { id:33, nom:"MOIKA — Pads Acide Kojique & Curcuma (50)", cat:"visage", prix:8000, photo:"images/MOIKA.png", img:"🟡", note:5.0, avis:15, badge:"new",
     desc:"Disques nettoyants MOIKA à l'acide kojique et au curcuma (50 pads). Éclaircit, illumine et revitalise la peau. Formule quotidienne pour un teint lumineux et unifié, aide à atténuer les taches." },
 
@@ -109,6 +112,7 @@ const CATEGORIES = [
   { cat:"bijoux",     nom:"Bijoux",       emoji:"💍" },
   { cat:"silhouette", nom:"Silhouette",   emoji:"✨" },
   { cat:"huiles",     nom:"Huiles",       emoji:"🫗" },
+  { cat:"artisanat",  nom:"Artisanat",    emoji:"🪵" },
   { cat:"all",        nom:"Tout voir",    emoji:"🛍️" },
 ];
 
@@ -120,7 +124,7 @@ let filtreCat = "all", recherche = "", tri = "default", promoActif = false;
 /* ===== Helpers ===== */
 const $ = s => document.querySelector(s);
 const fmt = n => n.toLocaleString("fr-FR") + " " + DEVISE;
-const labelCat = c => ({visage:"Soins visage",cheveux:"Cheveux",corps:"Corps",maquillage:"Maquillage",parfum:"Parfum",bijoux:"Bijoux",silhouette:"Silhouette",huiles:"Huiles"}[c]||c);
+const labelCat = c => ({visage:"Soins visage",cheveux:"Cheveux",corps:"Corps",maquillage:"Maquillage",parfum:"Parfum",bijoux:"Bijoux",silhouette:"Silhouette",huiles:"Huiles",artisanat:"Artisanat"}[c]||c);
 const etoiles = n => "★".repeat(Math.round(n)) + "☆".repeat(5-Math.round(n));
 const badgeHTML = b => b ? `<span class="p-badge ${b}">${{new:"Nouveau",best:"Best-seller",promo:"Promo"}[b]}</span>` : "";
 const visuel = p => p.photo ? `<img src="${p.photo}" alt="${p.nom}" loading="lazy" onerror="this.onerror=null;this.outerHTML='${p.img}'">` : p.img;  /* vraie photo si dispo, sinon icône de secours */
