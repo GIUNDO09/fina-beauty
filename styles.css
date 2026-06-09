@@ -394,6 +394,12 @@ h1,h2,h3,h4{color:#f3ead8}                          /* titres clairs */
 /* Lien "Voir le détail" (visible seulement sur mobile, quand la description est masquée) */
 .see-more{display:none;background:none;border:none;color:#d6aa4e;font-family:'Jost',sans-serif;font-size:.78rem;font-weight:600;cursor:pointer;padding:0;margin-top:.15rem;text-align:left}
 
+/* Bande avantages animée — affichée uniquement sur mobile */
+.trust-ticker{display:none}
+.trust-ticker-track{display:inline-flex;gap:2.2rem;animation:trustscroll 22s linear infinite;will-change:transform}
+.trust-ticker-track span{display:inline-flex;align-items:center;gap:.35rem;color:#d6aa4e;font-size:.82rem;font-weight:500;letter-spacing:.2px;white-space:nowrap}
+@keyframes trustscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
 /* ===== Barre de navigation mobile (cachée sur ordi) ===== */
 .bottom-nav{display:none}
 
@@ -461,4 +467,8 @@ h1,h2,h3,h4{color:#f3ead8}                          /* titres clairs */
   /* Masquer le bandeau livraison + la section catégories pour voir les produits au plus vite */
   .delivery-promo{display:none}
   #categories{display:none}
+
+  /* Avantages : grande bande remplacée par une ligne animée qui défile */
+  .trust-strip{display:none}
+  .trust-ticker{display:block;overflow:hidden;background:var(--sand);border-top:1px solid var(--sand-deep);border-bottom:1px solid var(--sand-deep);padding:.55rem 0;white-space:nowrap}
 }
