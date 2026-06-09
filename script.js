@@ -82,7 +82,7 @@ const PRODUITS = [
   { id:38, nom:"Poudre de Nila Bleu — 50g", cat:"visage", prix:3000, photo:"images/poudre-nilableu.png", img:"💙", note:5.0, avis:19, badge:"best",
     desc:"Poudre de nila bleu pure (50g), qualité supérieure. La poudre de beauté traditionnelle du Maroc pour unifier le teint, atténuer les zones sombres et illuminer la peau. À utiliser en masque ou mélangée à ta routine. 100% naturelle." },
 
-  { id:39, nom:"Tirelire Artisanale en Bois", cat:"artisanat", prix:2500, photo:"images/tire-lire.png", img:"🪵", note:5.0, avis:8, badge:"new",
+  { id:39, nom:"Tirelire Artisanale en Bois", cat:"artisanat", prix:1500, photo:"images/tire-lire.png", img:"🪵", note:5.0, avis:8, badge:"new",
     desc:"Tirelire artisanale en bois, gravée à la main. Forme hexagonale élégante avec motif laurier. Parfaite pour économiser ou offrir — un joli objet déco fait main." },
 
   { id:33, nom:"MOIKA — Pads Acide Kojique & Curcuma (50)", cat:"visage", prix:8000, photo:"images/MOIKA.png", img:"🟡", note:5.0, avis:15, badge:"new",
