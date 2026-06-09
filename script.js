@@ -79,6 +79,9 @@ const PRODUITS = [
   { id:37, nom:"Medicube Collagen Night Wrapping Mask", cat:"visage", prix:8000, photo:"images/medicube.png", img:"🌙", note:5.0, avis:17, badge:"best",
     desc:"Masque de nuit au collagène Medicube (soin coréen premium). Appliqué le soir, il enveloppe la peau : raffermit, hydrate intensément et illumine le teint pendant le sommeil. Réveil avec une peau repulpée et éclatante." },
 
+  { id:38, nom:"Poudre de Nila Bleu — 50g", cat:"visage", prix:3000, photo:"images/poudre-nilableu.png", img:"💙", note:5.0, avis:19, badge:"best",
+    desc:"Poudre de nila bleu pure (50g), qualité supérieure. La poudre de beauté traditionnelle du Maroc pour unifier le teint, atténuer les zones sombres et illuminer la peau. À utiliser en masque ou mélangée à ta routine. 100% naturelle." },
+
   { id:33, nom:"MOIKA — Pads Acide Kojique & Curcuma (50)", cat:"visage", prix:8000, photo:"images/MOIKA.png", img:"🟡", note:5.0, avis:15, badge:"new",
     desc:"Disques nettoyants MOIKA à l'acide kojique et au curcuma (50 pads). Éclaircit, illumine et revitalise la peau. Formule quotidienne pour un teint lumineux et unifié, aide à atténuer les taches." },
 
