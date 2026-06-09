@@ -1,0 +1,26 @@
+{
+  "name": "FINA Beauty",
+  "short_name": "FINA Beauty",
+  "description": "Cosmétiques naturels du Maroc — savons, huiles, soins, bijoux. Livraison au Sénégal & au Maroc.",
+  "lang": "fr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#171210",
+  "theme_color": "#171210",
+  "icons": [
+    {
+      "src": "images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -352,3 +352,18 @@ h1,h2,h3,h4{color:#f3ead8}                          /* titres clairs */
 .btn-ghost{color:#f3ead8;border-color:#f3ead8}
 .btn-ghost:hover{background:#f3ead8;color:var(--brown)}
 .story-emoji{background:radial-gradient(circle at 35% 30%,#2c2319,var(--brown))}
+
+/* ===== Pop-up Newsletter (1ère visite) ===== */
+.news-pop-overlay{position:fixed;inset:0;background:rgba(23,18,16,.72);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:1.2rem;z-index:200;opacity:0;visibility:hidden;transition:.3s}
+.news-pop-overlay.open{opacity:1;visibility:visible}
+.news-pop{position:relative;background:linear-gradient(160deg,#221b14,#171210);border:1px solid #caa15a;border-radius:22px;max-width:400px;width:100%;padding:2.4rem 1.8rem 1.8rem;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.55);transform:translateY(20px) scale(.96);transition:.35s}
+.news-pop-overlay.open .news-pop{transform:translateY(0) scale(1)}
+.news-pop-emblem{width:64px;height:64px;margin:0 auto .6rem;display:block}
+.news-pop h3{font-family:'Cormorant Garamond',serif;color:#f3ead8;font-size:1.9rem;line-height:1.2;margin-bottom:.5rem}
+.news-pop p{color:#c9b8a6;font-size:.95rem;margin-bottom:1.3rem}
+.news-pop p strong{color:#d6aa4e}
+.news-pop-form{display:flex;flex-direction:column;gap:.7rem}
+.news-pop-form input{padding:.85rem 1rem;border-radius:50px;border:1.5px solid #3a2f22;background:#171210;color:#f3ead8;font-family:'Jost',sans-serif;font-size:.95rem;text-align:center}
+.news-pop-form input:focus{outline:none;border-color:#d6aa4e}
+.news-pop-skip{margin-top:.9rem;background:none;border:none;color:#8a7d72;font-size:.85rem;cursor:pointer;text-decoration:underline;font-family:'Jost',sans-serif}
+.news-pop-close{position:absolute;top:.7rem;right:1rem;background:none;border:none;color:#8a7d72;font-size:1.25rem;cursor:pointer;line-height:1}

@@ -88,30 +88,15 @@ const PRODUITS = [
   { id:33, nom:"MOIKA — Pads Acide Kojique & Curcuma (50)", cat:"visage", prix:8000, photo:"images/MOIKA.png", img:"🟡", note:5.0, avis:15, badge:"new",
     desc:"Disques nettoyants MOIKA à l'acide kojique et au curcuma (50 pads). Éclaircit, illumine et revitalise la peau. Formule quotidienne pour un teint lumineux et unifié, aide à atténuer les taches." },
 
-  /* ===== EXEMPLES (à remplacer par tes vrais produits) ===== */
-  { id:1,  nom:"Huile d'Argan pure",        cat:"visage",     prix:6500, img:"💧", note:4.9, avis:128, badge:"best",  desc:"100% pure du Maroc, nourrit et répare peau et cheveux. Pressée à froid." },
-  { id:2,  nom:"Beurre de Karité brut",     cat:"corps",      prix:4000, img:"🌰", note:4.8, avis:96,  badge:"best",  desc:"Hydratation intense, idéal peau sèche, vergetures et cheveux secs." },
-  { id:4,  nom:"Ghassoul (argile)",         cat:"visage",     prix:3500, img:"🪨", note:4.6, avis:41,  badge:null,    desc:"Argile naturelle purifiante pour visage, corps et cheveux." },
-  { id:5,  nom:"Eau de rose",               cat:"visage",     prix:4500, img:"🌹", note:4.9, avis:73,  badge:"new",   desc:"Tonique naturel, apaise, hydrate et illumine le teint." },
-  { id:6,  nom:"Huile de figue de Barbarie",cat:"visage",     prix:12000,img:"🌵", note:5.0, avis:38,  badge:"new",   desc:"Anti-âge précieux, raffermit et lisse la peau. Trésor rare." },
-  { id:7,  nom:"Masque capillaire Argan",   cat:"cheveux",    prix:5500, img:"🧴", note:4.8, avis:64,  badge:null,    desc:"Répare en profondeur les cheveux secs et abîmés, brillance intense." },
-  { id:8,  nom:"Huile de Nigelle",          cat:"cheveux",    prix:5000, img:"🌿", note:4.7, avis:47,  badge:null,    desc:"Fortifie le cuir chevelu et stimule la pousse des cheveux." },
-  { id:9,  nom:"Khôl naturel",              cat:"maquillage", prix:2500, img:"👁️", note:4.5, avis:29,  badge:null,    desc:"Khôl traditionnel pour un regard intense et profond." },
-  { id:10, nom:"Rouge à lèvres Aker Fassi", cat:"maquillage", prix:3500, img:"💄", note:4.8, avis:52,  badge:"promo", oldPrix:4500, desc:"Teinte naturelle issue du coquelicot et de la grenade." },
-  { id:11, nom:"Parfum Oud & Ambre",        cat:"parfum",     prix:9000, img:"🌸", note:4.9, avis:81,  badge:"best",  desc:"Senteur orientale boisée, chaude et envoûtante. Tenue longue durée." },
-  { id:12, nom:"Brume fleur d'oranger",     cat:"parfum",     prix:6000, img:"🍊", note:4.7, avis:35,  badge:null,    desc:"Néroli du Maroc, fraîche, délicate et apaisante." },
 ];
 
 /* ===== Catégories (vitrine) ===== */
 const CATEGORIES = [
   { cat:"visage",     nom:"Soins visage", emoji:"🧖‍♀️" },
-  { cat:"cheveux",    nom:"Cheveux",      emoji:"💇‍♀️" },
   { cat:"corps",      nom:"Corps",        emoji:"🧴" },
-  { cat:"maquillage", nom:"Maquillage",   emoji:"💄" },
-  { cat:"parfum",     nom:"Parfums",      emoji:"🌸" },
+  { cat:"huiles",     nom:"Huiles",       emoji:"🫗" },
   { cat:"bijoux",     nom:"Bijoux",       emoji:"💍" },
   { cat:"silhouette", nom:"Silhouette",   emoji:"✨" },
-  { cat:"huiles",     nom:"Huiles",       emoji:"🫗" },
   { cat:"artisanat",  nom:"Artisanat",    emoji:"🪵" },
   { cat:"all",        nom:"Tout voir",    emoji:"🛍️" },
 ];
@@ -364,7 +349,37 @@ $("#contact-form").addEventListener("submit", e => {
 });
 
 /* ===== Newsletter ===== */
-$("#newsletter-form").addEventListener("submit", e => { e.preventDefault(); e.target.reset(); toast("🎁 Merci ! Votre code BIENVENUE est prêt."); });
+/* ===== Newsletter (enregistre l'e-mail en local) ===== */
+function inscrireEmail(email){
+  email = (email||"").trim().toLowerCase();
+  if(!email) return;
+  let subs = JSON.parse(localStorage.getItem("fina_newsletter") || "[]");
+  if(!subs.includes(email)){ subs.push(email); localStorage.setItem("fina_newsletter", JSON.stringify(subs)); }
+}
+$("#newsletter-form").addEventListener("submit", e => {
+  e.preventDefault();
+  inscrireEmail(e.target.querySelector("input").value);
+  e.target.reset();
+  toast("🎁 Merci ! Votre code BIENVENUE (-10%) est prêt.");
+});
+
+/* ===== Pop-up newsletter (1ère visite) ===== */
+const newsPop = $("#news-pop");
+function fermerNewsPop(){ newsPop.classList.remove("open"); localStorage.setItem("fina_news_seen", "1"); }
+if(newsPop){
+  if(!localStorage.getItem("fina_news_seen")){
+    setTimeout(() => newsPop.classList.add("open"), 1800);
+  }
+  $("#news-pop-close").addEventListener("click", fermerNewsPop);
+  $("#news-pop-skip").addEventListener("click", fermerNewsPop);
+  newsPop.addEventListener("click", e => { if(e.target === newsPop) fermerNewsPop(); });
+  $("#news-pop-form").addEventListener("submit", e => {
+    e.preventDefault();
+    inscrireEmail(e.target.querySelector("input").value);
+    fermerNewsPop();
+    toast("🎉 Inscription réussie ! Votre code BIENVENUE (-10%) est prêt.");
+  });
+}
 
 /* ===== FAQ ===== */
 $("#faq-list").addEventListener("click", e => {
@@ -397,3 +412,8 @@ renderBestSellers();
 rendrePanier();
 rendreFavoris();
 $("#fav-count").textContent = favoris.length;
+
+/* ===== Service Worker (PWA installable + hors-ligne) ===== */
+if("serviceWorker" in navigator){
+  window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+}

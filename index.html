@@ -9,6 +9,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="images/emblem.svg" />
+  <!-- PWA : installable sur l'écran d'accueil -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#171210" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="FINA Beauty" />
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -134,10 +142,7 @@
         <div class="filters" id="filters">
           <button class="chip active" data-cat="all">Tout</button>
           <button class="chip" data-cat="visage">Soins visage</button>
-          <button class="chip" data-cat="cheveux">Cheveux</button>
           <button class="chip" data-cat="corps">Corps</button>
-          <button class="chip" data-cat="maquillage">Maquillage</button>
-          <button class="chip" data-cat="parfum">Parfums</button>
         <button class="chip" data-cat="bijoux">Bijoux</button>
         <button class="chip" data-cat="silhouette">Silhouette</button>
         <button class="chip" data-cat="huiles">Huiles</button>
@@ -333,6 +338,21 @@
   <!-- Notification (toast) -->
   <div class="toast" id="toast"></div>
 
-  <script src="script.js?v=23"></script>
+  <!-- ===== Pop-up Newsletter (1ère visite) ===== -->
+  <div class="news-pop-overlay" id="news-pop" role="dialog" aria-modal="true" aria-label="Newsletter FINA Beauty">
+    <div class="news-pop">
+      <button class="news-pop-close" id="news-pop-close" aria-label="Fermer">✕</button>
+      <img class="news-pop-emblem" src="images/emblem.svg" alt="" />
+      <h3>Bienvenue chez FINA Beauty 🌿</h3>
+      <p>Inscris-toi et reçois <strong>-10%</strong> sur ta première commande, plus nos nouveautés en avant-première 💛</p>
+      <form class="news-pop-form" id="news-pop-form">
+        <input type="email" placeholder="Ton adresse e-mail" required />
+        <button type="submit" class="btn btn-primary btn-block">Je reçois mon code -10%</button>
+      </form>
+      <button class="news-pop-skip" id="news-pop-skip">Non merci, plus tard</button>
+    </div>
+  </div>
+
+  <script src="script.js?v=24"></script>
 </body>
 </html>
