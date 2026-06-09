@@ -12,7 +12,7 @@ const PROMO_PCT = 0.10;           // -10%
    note = sur 5 · avis = nb d'avis · badge = "new" | "best" | "promo" | null · oldPrix = ancien prix si promo */
 const PRODUITS = [
   /* ===== VRAIS PRODUITS ===== (photo = fichier dans le dossier images/) */
-  { id:13, nom:"Savon au Nila Bleu", cat:"visage", prix:2500, photo:"images/savon-nila-bleu.png", img:"🧼", note:5.0, avis:24, badge:"best",
+  { id:13, nom:"Savon au Nila Bleu", cat:"visage", prix:1800, oldPrix:2500, photo:"images/savon-nila-bleu.png", img:"🧼", note:5.0, avis:24, badge:"best",
     desc:"Savon de beauté artisanal à la poudre de nila bleu, fabriqué au Maroc. Unifie le teint, atténue taches, zones sombres et boutons. Nettoie le visage en profondeur et régule le sébum pour un teint éclatant. Naturel & fait main." },
 
   { id:14, nom:"Savon Noir Marocain — 250g", cat:"corps", prix:1500, photo:"images/savon-noir.png", img:"🧴", note:4.9, avis:18, badge:"best",
