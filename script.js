@@ -70,7 +70,7 @@ const PRODUITS = [
   { id:34, nom:"Huile de Ricin — Souplesse", cat:"huiles", prix:1500, photo:"images/huile-ricin.png", img:"🌰", note:5.0, avis:11, badge:null,
     desc:"Huile de ricin Souplesse, 100% végétale. Stimule la pousse des cheveux, cils et sourcils, et nourrit la peau en profondeur." },
 
-  { id:35, nom:"Mélange d'Huiles Cheveux — Spécial FINA", cat:"huiles", prix:2500, photo:"images/huilemelangecheveux.png", img:"💆‍♀️", note:5.0, avis:22, badge:"best",
+  { id:35, nom:"Mélange d'Huiles Cheveux — Spécial FINA", cat:"huiles", prix:8000, photo:"images/huilemelangecheveux.png", img:"💆‍♀️", note:5.0, avis:22, badge:"best",
     desc:"Le mélange signature FINA pour cheveux : une synergie d'huiles végétales qui nourrit le cuir chevelu, fortifie les cheveux et favorise la pousse. La recette beauté maison de FINA, pour des cheveux forts et brillants." },
 
   { id:36, nom:"Huile d'Akpi (Djansang)", cat:"huiles", prix:1500, photo:"images/huile-akpi.png", img:"🌰", note:5.0, avis:9, badge:null,
