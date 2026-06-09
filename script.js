@@ -68,6 +68,9 @@ const PRODUITS = [
   { id:32, nom:"Huile de Curcuma — Souplesse", cat:"huiles", prix:1500, photo:"images/huile-curcuma.png", img:"🟠", note:5.0, avis:7, badge:null,
     desc:"Huile de curcuma Souplesse, 100% végétale. Ravive l'éclat du teint, apaise et purifie la peau." },
 
+  { id:33, nom:"MOIKA — Pads Acide Kojique & Curcuma (50)", cat:"visage", prix:5000, photo:"images/MOIKA.png", img:"🟡", note:5.0, avis:15, badge:"new",
+    desc:"Disques nettoyants MOIKA à l'acide kojique et au curcuma (50 pads). Éclaircit, illumine et revitalise la peau. Formule quotidienne pour un teint lumineux et unifié, aide à atténuer les taches." },
+
   /* ===== EXEMPLES (à remplacer par tes vrais produits) ===== */
   { id:1,  nom:"Huile d'Argan pure",        cat:"visage",     prix:6500, img:"💧", note:4.9, avis:128, badge:"best",  desc:"100% pure du Maroc, nourrit et répare peau et cheveux. Pressée à froid." },
   { id:2,  nom:"Beurre de Karité brut",     cat:"corps",      prix:4000, img:"🌰", note:4.8, avis:96,  badge:"best",  desc:"Hydratation intense, idéal peau sèche, vergetures et cheveux secs." },
