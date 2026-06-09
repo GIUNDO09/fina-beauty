@@ -429,4 +429,8 @@ h1,h2,h3,h4{color:#f3ead8}                          /* titres clairs */
   .cat-card .cat-emoji{font-size:1.85rem}
   .cat-card h3{font-size:.82rem;margin-top:.3rem}
   .cat-card small{display:none}
+
+  /* Masquer le bandeau livraison + la section catégories pour voir les produits au plus vite */
+  .delivery-promo{display:none}
+  #categories{display:none}
 }
