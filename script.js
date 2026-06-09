@@ -36,6 +36,15 @@ const PRODUITS = [
   { id:20, nom:"Savon Hikma Miel — 400g", cat:"visage", prix:2500, photo:"images/hikma-miel.png", img:"🍯", note:5.0, avis:8, badge:"new",
     desc:"Savon Hikma au miel (400g). Doux et hydratant, il nourrit et adoucit la peau en profondeur. 100% naturel et artisanal." },
 
+  { id:21, nom:"Crème YOKEBE — Galbe & Fermeté", cat:"silhouette", prix:5000, photo:"images/GAME-YOKEBE.png", img:"🧴", note:5.0, avis:14, badge:"new",
+    desc:"Crème corporelle YOKEBE, 100% naturelle (réservée aux adultes). Traditionnellement utilisée en massage local pour galber et raffermir fessiers et hanches. Usage externe." },
+
+  { id:22, nom:"Huile YOKEBE — 125 ml", cat:"silhouette", prix:5000, photo:"images/GAME-YOKEBE.png", img:"💧", note:5.0, avis:10, badge:"new",
+    desc:"Huile corporelle YOKEBE (125 ml), 100% naturelle (réservée aux adultes). À masser localement pour galber et raffermir fessiers et hanches. Usage externe." },
+
+  { id:23, nom:"Sirop YOKEBE — 125 ml", cat:"silhouette", prix:5000, photo:"images/GAME-YOKEBE.png", img:"🍶", note:5.0, avis:8, badge:"new",
+    desc:"Sirop YOKEBE (125 ml), complément naturel (réservé aux adultes) traditionnellement utilisé pour favoriser la prise de poids. À consommer selon les indications de l'emballage." },
+
   /* ===== EXEMPLES (à remplacer par tes vrais produits) ===== */
   { id:1,  nom:"Huile d'Argan pure",        cat:"visage",     prix:6500, img:"💧", note:4.9, avis:128, badge:"best",  desc:"100% pure du Maroc, nourrit et répare peau et cheveux. Pressée à froid." },
   { id:2,  nom:"Beurre de Karité brut",     cat:"corps",      prix:4000, img:"🌰", note:4.8, avis:96,  badge:"best",  desc:"Hydratation intense, idéal peau sèche, vergetures et cheveux secs." },
@@ -58,6 +67,7 @@ const CATEGORIES = [
   { cat:"maquillage", nom:"Maquillage",   emoji:"💄" },
   { cat:"parfum",     nom:"Parfums",      emoji:"🌸" },
   { cat:"bijoux",     nom:"Bijoux",       emoji:"💍" },
+  { cat:"silhouette", nom:"Silhouette",   emoji:"✨" },
   { cat:"all",        nom:"Tout voir",    emoji:"🛍️" },
 ];
 
@@ -69,7 +79,7 @@ let filtreCat = "all", recherche = "", tri = "default", promoActif = false;
 /* ===== Helpers ===== */
 const $ = s => document.querySelector(s);
 const fmt = n => n.toLocaleString("fr-FR") + " " + DEVISE;
-const labelCat = c => ({visage:"Soins visage",cheveux:"Cheveux",corps:"Corps",maquillage:"Maquillage",parfum:"Parfum",bijoux:"Bijoux"}[c]||c);
+const labelCat = c => ({visage:"Soins visage",cheveux:"Cheveux",corps:"Corps",maquillage:"Maquillage",parfum:"Parfum",bijoux:"Bijoux",silhouette:"Silhouette"}[c]||c);
 const etoiles = n => "★".repeat(Math.round(n)) + "☆".repeat(5-Math.round(n));
 const badgeHTML = b => b ? `<span class="p-badge ${b}">${{new:"Nouveau",best:"Best-seller",promo:"Promo"}[b]}</span>` : "";
 const visuel = p => p.photo ? `<img src="${p.photo}" alt="${p.nom}" loading="lazy" onerror="this.onerror=null;this.outerHTML='${p.img}'">` : p.img;  /* vraie photo si dispo, sinon icône de secours */
