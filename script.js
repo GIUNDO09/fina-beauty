@@ -235,7 +235,9 @@ function rendrePanier(){
   $("#discount-line").hidden = !promoActif;
   $("#cart-discount").textContent = "-" + fmt(disc);
   $("#cart-total").textContent = fmt(sub - disc);
-  $("#cart-count").textContent = panier.reduce((s,i)=>s+i.qte,0);
+  const _nbCart = panier.reduce((s,i)=>s+i.qte,0);
+  $("#cart-count").textContent = _nbCart;
+  if($("#bn-cart-count")) $("#bn-cart-count").textContent = _nbCart;
 }
 $("#cart-items").addEventListener("click", e => {
   const t=e.target; const id=+t.dataset.id, act=t.dataset.act;
@@ -257,7 +259,7 @@ function toggleFav(id){
   if(favoris.includes(id)){ favoris=favoris.filter(f=>f!==id); toast("💔 Retiré des favoris"); }
   else { favoris.push(id); toast("❤️ Ajouté aux favoris"); }
   localStorage.setItem("fina_favoris", JSON.stringify(favoris));
-  $("#fav-count").textContent = favoris.length;
+  $("#fav-count").textContent = favoris.length; if($("#bn-fav-count")) $("#bn-fav-count").textContent = favoris.length;
   afficherProduits(); renderBestSellers(); rendreFavoris();
 }
 function rendreFavoris(){
@@ -320,6 +322,10 @@ function ouvrir(which){
 function fermerTiroirs(){ overlay.classList.remove("open"); cartD.classList.remove("open"); favD.classList.remove("open"); }
 $("#open-cart").addEventListener("click", ()=>ouvrir("cart"));
 $("#open-fav").addEventListener("click", ()=>ouvrir("fav"));
+/* Barre de navigation mobile (bas) */
+if($("#bn-cart")) $("#bn-cart").addEventListener("click", ()=>ouvrir("cart"));
+if($("#bn-fav")) $("#bn-fav").addEventListener("click", ()=>ouvrir("fav"));
+if($("#bn-search")) $("#bn-search").addEventListener("click", ()=>{ $("#searchbar").classList.add("open"); $("#search-input").focus(); });
 $("#close-cart").addEventListener("click", fermerTiroirs);
 $("#close-fav").addEventListener("click", fermerTiroirs);
 overlay.addEventListener("click", fermerTiroirs);
@@ -411,7 +417,7 @@ afficherProduits();
 renderBestSellers();
 rendrePanier();
 rendreFavoris();
-$("#fav-count").textContent = favoris.length;
+$("#fav-count").textContent = favoris.length; if($("#bn-fav-count")) $("#bn-fav-count").textContent = favoris.length;
 
 /* ===== Service Worker (PWA installable + hors-ligne) ===== */
 if("serviceWorker" in navigator){

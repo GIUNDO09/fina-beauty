@@ -367,3 +367,37 @@ h1,h2,h3,h4{color:#f3ead8}                          /* titres clairs */
 .news-pop-form input:focus{outline:none;border-color:#d6aa4e}
 .news-pop-skip{margin-top:.9rem;background:none;border:none;color:#8a7d72;font-size:.85rem;cursor:pointer;text-decoration:underline;font-family:'Jost',sans-serif}
 .news-pop-close{position:absolute;top:.7rem;right:1rem;background:none;border:none;color:#8a7d72;font-size:1.25rem;cursor:pointer;line-height:1}
+
+/* ===== Barre de navigation mobile (cachée sur ordi) ===== */
+.bottom-nav{display:none}
+
+/* ===== Optimisations mobile (≤640px) ===== */
+@media(max-width:640px){
+  /* Barre du bas façon application */
+  .bottom-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:88;background:rgba(23,18,16,.97);backdrop-filter:blur(12px);border-top:1px solid #3a2f22;justify-content:space-around;padding:.3rem .1rem;padding-bottom:calc(.3rem + env(safe-area-inset-bottom));box-shadow:0 -6px 20px rgba(0,0,0,.25)}
+  .bn-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;color:#c4b4a2;font-family:'Jost',sans-serif;font-size:.6rem;cursor:pointer;padding:.35rem 0;text-decoration:none;-webkit-tap-highlight-color:transparent}
+  .bn-ico{font-size:1.3rem;line-height:1;position:relative;display:inline-block}
+  .bn-lbl{letter-spacing:.2px}
+  .bn-item:active .bn-ico{transform:scale(.9)}
+  .bn-badge{position:absolute;top:-6px;right:-10px;background:var(--terracotta);color:#fff;font-size:.58rem;font-weight:600;min-width:15px;height:15px;border-radius:50px;display:flex;align-items:center;justify-content:center;padding:0 3px}
+
+  /* Laisser la place à la barre + remonter les boutons flottants */
+  body{padding-bottom:62px}
+  .whatsapp-float{bottom:74px;left:16px;width:50px;height:50px;font-size:1.5rem}
+  .to-top{bottom:74px}
+
+  /* Filtres : défilement horizontal (swipe) au lieu du retour à la ligne */
+  .filters{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 4% .45rem;margin:0 -4% 1.6rem}
+  .filters::-webkit-scrollbar{display:none}
+  .chip{flex:0 0 auto}
+
+  /* Cartes produits plus nettes et plus tactiles */
+  .product-img{height:158px}
+  .product-body{padding:.85rem .85rem 1rem}
+  .product h3{font-size:1.18rem}
+  .price{font-size:1.05rem}
+  .add-btn{padding:.55rem .8rem;font-size:.82rem}
+
+  /* Meilleures ventes : cartes un peu plus étroites pour le swipe */
+  .bs-track .product{flex-basis:200px}
+}
