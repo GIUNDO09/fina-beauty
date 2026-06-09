@@ -51,6 +51,9 @@ const PRODUITS = [
   { id:25, nom:"Coffret Disaar Vitamine C (5 produits)", cat:"visage", prix:8000, photo:"images/DISAAR.png", img:"🍊", note:5.0, avis:16, badge:"best",
     desc:"Coffret complet Disaar à la Vitamine C & acide hyaluronique : nettoyant visage, sérum éclat, sérum whitening, crème hydratante et soin contour des yeux. Pour un teint lumineux et unifié, une peau repulpée et hydratée. Anti-taches, anti-rides et anti-cernes." },
 
+  { id:26, nom:"Gofio El Sahari — Farine de Maïs (375g)", cat:"silhouette", prix:3500, photo:"images/GOFIO.png", img:"🌽", note:5.0, avis:13, badge:"new",
+    desc:"Farine de maïs grillé Gofio El Sahari (375g), 100% naturelle, sans conservateurs. Aliment traditionnel saharien riche en énergie, consommé pour favoriser la prise de poids. À mélanger au lait, à l'eau ou à une boisson chaude." },
+
   /* ===== EXEMPLES (à remplacer par tes vrais produits) ===== */
   { id:1,  nom:"Huile d'Argan pure",        cat:"visage",     prix:6500, img:"💧", note:4.9, avis:128, badge:"best",  desc:"100% pure du Maroc, nourrit et répare peau et cheveux. Pressée à froid." },
   { id:2,  nom:"Beurre de Karité brut",     cat:"corps",      prix:4000, img:"🌰", note:4.8, avis:96,  badge:"best",  desc:"Hydratation intense, idéal peau sèche, vergetures et cheveux secs." },
