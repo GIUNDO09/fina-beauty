@@ -406,4 +406,27 @@ h1,h2,h3,h4{color:#f3ead8}                          /* titres clairs */
   .header #open-search, .header #open-fav{display:none}
   .logo{font-size:1.5rem}
   .emblem{width:36px;height:36px}
+
+  /* ⚡ Compacter le HAUT pour voir les produits très vite */
+  .hero{padding:1.4rem 0 1.6rem;min-height:auto}
+  .hero-visual{display:none}            /* cartes décoratives masquées sur mobile */
+  .hero h1{font-size:1.85rem;margin-bottom:.6rem}
+  .hero .lead{font-size:.98rem;margin-bottom:1rem}
+  .hero-cta{margin-bottom:1rem}
+  .hero-stats{gap:.9rem;margin-top:.3rem}
+  .trust-strip{padding:1.1rem 0}
+  .categories{padding:1.8rem 0}
+  .bestsellers{padding:1.8rem 0}
+  .shop{padding:2rem 0}
+  .section-head{margin-bottom:1.2rem}
+  .section-head h2{font-size:1.9rem}
+  .section-sub{font-size:.9rem}
+
+  /* Catégories : bande horizontale compacte (façon app) au lieu d'une grande grille */
+  .cat-grid{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:.7rem;scrollbar-width:none;margin:0 -4%;padding:0 4% .4rem}
+  .cat-grid::-webkit-scrollbar{display:none}
+  .cat-card{flex:0 0 86px;padding:.9rem .35rem}
+  .cat-card .cat-emoji{font-size:1.85rem}
+  .cat-card h3{font-size:.82rem;margin-top:.3rem}
+  .cat-card small{display:none}
 }
