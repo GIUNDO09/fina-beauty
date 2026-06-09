@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FINA Beauty — Cosmétiques naturels du Maroc 🌿</title>
+  <meta name="description" content="FINA Beauty — cosmétiques naturels du Maroc : huile d'argan, beurre de karité, soins visage, cheveux, maquillage et parfums. Livraison au Sénégal et au Maroc." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="images/emblem.svg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===== Barre d'annonce ===== -->
+  <div class="topbar" id="topbar">
+    <div class="topbar-track">
+      <span>🌿 Cosmétiques 100% naturels du Maroc</span>
+      <span>🚚 Livraison au Sénégal 🇸🇳 &amp; Maroc 🇲🇦</span>
+      <span>💳 Paiement Wave · Orange Money · à la livraison</span>
+      <span>🎁 -10% sur ta 1ʳᵉ commande avec le code <strong>BIENVENUE</strong></span>
+      <span>🌿 Cosmétiques 100% naturels du Maroc</span>
+      <span>🚚 Livraison au Sénégal 🇸🇳 &amp; Maroc 🇲🇦</span>
+      <span>💳 Paiement Wave · Orange Money · à la livraison</span>
+      <span>🎁 -10% sur ta 1ʳᵉ commande avec le code <strong>BIENVENUE</strong></span>
+    </div>
+  </div>
+
+  <!-- ===== En-tête / Navigation ===== -->
+  <header class="header" id="accueil">
+    <div class="container nav">
+      <a href="#accueil" class="logo"><img src="images/emblem.svg" class="emblem" alt="" />FINA<span>Beauty</span></a>
+      <nav class="menu" id="menu">
+        <a href="#accueil">Accueil</a>
+        <a href="#categories">Catégories</a>
+        <a href="#boutique">Boutique</a>
+        <a href="#histoire">Notre histoire</a>
+        <a href="#avis">Avis</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" id="open-search" aria-label="Rechercher">🔍</button>
+        <button class="icon-btn" id="open-fav" aria-label="Favoris">❤️<span class="badge-count" id="fav-count">0</span></button>
+        <button class="icon-btn cart-btn" id="open-cart" aria-label="Panier">🛍️<span class="badge-count" id="cart-count">0</span></button>
+        <button class="burger" id="burger" aria-label="Menu">☰</button>
+      </div>
+    </div>
+    <!-- Barre de recherche déroulante -->
+    <div class="searchbar" id="searchbar">
+      <div class="container">
+        <input type="text" id="search-input" placeholder="Rechercher un produit… (ex : argan, karité, parfum)" />
+        <button class="search-close" id="close-search" aria-label="Fermer">✕</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text reveal">
+        <p class="eyebrow">✨ Beauté naturelle &amp; authentique</p>
+        <h1>Révélez votre éclat<br />avec les trésors du Maroc</h1>
+        <p class="lead">Huile d'argan, beurre de karité, soins du visage, des cheveux, maquillage et parfums — des produits naturels choisis avec amour par <strong>FINA</strong>.</p>
+        <div class="hero-cta">
+          <a href="#boutique" class="btn btn-primary">Découvrir la boutique</a>
+          <a href="#histoire" class="btn btn-ghost">Notre histoire</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>100%</strong><span>Naturel</span></div>
+          <div><strong>🇲🇦</strong><span>Origine Maroc</span></div>
+          <div><strong>+500</strong><span>Clientes ravies</span></div>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="hero-card">💧<p>Huile d'Argan</p></div>
+        <div class="hero-card alt">🌰<p>Karité</p></div>
+        <div class="hero-card alt">🌸<p>Parfums</p></div>
+        <div class="hero-card">🌹<p>Eau de rose</p></div>
+        <div class="hero-bubble">🌿</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Bandeau confiance ===== -->
+  <section class="trust-strip">
+    <div class="container trust-inner">
+      <div class="trust"><span>🌿</span><div><strong>100% naturel</strong><small>Sans produits chimiques agressifs</small></div></div>
+      <div class="trust"><span>🚚</span><div><strong>Livraison locale</strong><small>Sénégal &amp; Maroc, retrait possible</small></div></div>
+      <div class="trust"><span>💳</span><div><strong>Paiement facile</strong><small>Wave, Orange Money, à la livraison</small></div></div>
+      <div class="trust"><span>💬</span><div><strong>Conseil personnalisé</strong><small>On répond vite sur WhatsApp</small></div></div>
+    </div>
+  </section>
+
+  <!-- ===== Bandeau livraison ===== -->
+  <div class="delivery-promo">
+    🚚 <strong>Livraison rapide</strong> à Dakar, Thiès, Mbour 🇸🇳 &amp; Casablanca, Rabat, Marrakech 🇲🇦 &nbsp;•&nbsp; Retrait sur place possible
+  </div>
+
+  <!-- ===== Catégories ===== -->
+  <section class="categories" id="categories">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Explorez</p>
+        <h2>Nos catégories</h2>
+        <p class="section-sub">Trouvez vos soins par univers</p>
+      </div>
+      <div class="cat-grid" id="cat-grid"><!-- généré par script.js --></div>
+    </div>
+  </section>
+
+  <!-- ===== Meilleures ventes ===== -->
+  <section class="bestsellers" id="bestsellers">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">🔥 Les préférées de nos clientes</p>
+        <h2>Meilleures ventes</h2>
+        <p class="section-sub">Faites défiler pour découvrir nos coups de cœur</p>
+      </div>
+      <div class="bs-track" id="bestsellers-track"><!-- généré par script.js --></div>
+    </div>
+  </section>
+
+  <!-- ===== Boutique ===== -->
+  <section class="shop" id="boutique">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Notre sélection</p>
+        <h2>La Boutique</h2>
+        <p class="section-sub">Ajoutez au panier 🛍️ puis finalisez sur WhatsApp 💬</p>
+      </div>
+
+      <div class="shop-toolbar">
+        <div class="filters" id="filters">
+          <button class="chip active" data-cat="all">Tout</button>
+          <button class="chip" data-cat="visage">Soins visage</button>
+          <button class="chip" data-cat="cheveux">Cheveux</button>
+          <button class="chip" data-cat="corps">Corps</button>
+          <button class="chip" data-cat="maquillage">Maquillage</button>
+          <button class="chip" data-cat="parfum">Parfums</button>
+        <button class="chip" data-cat="bijoux">Bijoux</button>
+        </div>
+        <select id="sort" class="sort-select" aria-label="Trier">
+          <option value="default">Trier : à la une</option>
+          <option value="price-asc">Prix croissant</option>
+          <option value="price-desc">Prix décroissant</option>
+          <option value="new">Nouveautés</option>
+        </select>
+      </div>
+
+      <div class="products" id="products"><!-- généré par script.js --></div>
+      <p class="no-result" id="no-result" hidden>Aucun produit ne correspond à votre recherche 🔍</p>
+    </div>
+  </section>
+
+  <!-- ===== Notre histoire ===== -->
+  <section class="story" id="histoire">
+    <div class="container story-inner">
+      <div class="story-visual reveal">
+        <div class="story-emoji">🌿</div>
+      </div>
+      <div class="story-text reveal">
+        <p class="eyebrow">Notre histoire</p>
+        <h2>La beauté authentique,<br />venue du cœur du Maroc</h2>
+        <p>Chez <strong>FINA Beauty</strong>, nous croyons que la vraie beauté est naturelle. Nous sélectionnons à la main les trésors cosmétiques du Maroc — huile d'argan pressée à froid, beurre de karité brut, ghassoul, eau de rose — pour vous offrir des soins purs, efficaces et respectueux de votre peau.</p>
+        <p>Chaque produit raconte un savoir-faire ancestral, transmis de génération en génération. Notre mission : rendre cette beauté accessible au Sénégal et au Maroc, avec un service chaleureux et de proximité. 💛</p>
+        <a href="#boutique" class="btn btn-primary">Découvrir nos soins</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Avis clients ===== -->
+  <section class="reviews" id="avis">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Elles nous font confiance</p>
+        <h2>Avis clientes</h2>
+        <div class="rating-summary">⭐ 4,9/5 &nbsp;•&nbsp; basé sur +500 clientes satisfaites</div>
+      </div>
+      <div class="review-grid">
+        <div class="review reveal">
+          <div class="stars">★★★★★</div>
+          <p>« L'huile d'argan est incroyable, ma peau n'a jamais été aussi douce. Livraison rapide à Dakar ! »</p>
+          <span class="reviewer">— Awa D. 🇸🇳</span>
+        </div>
+        <div class="review reveal">
+          <div class="stars">★★★★★</div>
+          <p>« Le beurre de karité pur est top pour mes cheveux. Commande facile par WhatsApp, je recommande ! »</p>
+          <span class="reviewer">— Salma B. 🇲🇦</span>
+        </div>
+        <div class="review reveal">
+          <div class="stars">★★★★★</div>
+          <p>« Produits authentiques et naturels, exactement ce que je cherchais. Merci FINA Beauty ! »</p>
+          <span class="reviewer">— Fatou N. 🇸🇳</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Newsletter / Offre ===== -->
+  <section class="newsletter">
+    <div class="container newsletter-inner reveal">
+      <h2>🎁 -10% sur votre première commande</h2>
+      <p>Recevez nos nouveautés et offres exclusives. Utilisez le code <strong>BIENVENUE</strong> sur votre 1ʳᵉ commande !</p>
+      <form class="newsletter-form" id="newsletter-form">
+        <input type="email" placeholder="Votre adresse e-mail" required />
+        <button type="submit" class="btn btn-light">Je m'inscris</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Questions fréquentes</p>
+        <h2>FAQ</h2>
+      </div>
+      <div class="faq-list" id="faq-list">
+        <div class="faq-item"><button class="faq-q">Comment passer commande ? <span>+</span></button><div class="faq-a">Ajoutez vos produits au panier 🛍️, cliquez sur « Commander sur WhatsApp », et votre message pré-rempli s'ouvre. On confirme avec vous et on organise la livraison.</div></div>
+        <div class="faq-item"><button class="faq-q">Quels moyens de paiement acceptez-vous ? <span>+</span></button><div class="faq-a">Wave, Orange Money, ou paiement à la livraison / en main propre. C'est vous qui choisissez ce qui vous arrange.</div></div>
+        <div class="faq-item"><button class="faq-q">Où livrez-vous ? <span>+</span></button><div class="faq-a">Au Sénégal 🇸🇳 et au Maroc 🇲🇦. Livraison locale en main propre, ou retrait sur place selon votre zone.</div></div>
+        <div class="faq-item"><button class="faq-q">Vos produits sont-ils vraiment naturels ? <span>+</span></button><div class="faq-a">Oui ! Nous sélectionnons des cosmétiques naturels du Maroc (argan, karité, ghassoul…), sans produits chimiques agressifs.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section class="contact" id="contact">
+    <div class="container contact-inner">
+      <div class="contact-info reveal">
+        <p class="eyebrow">Parlons-en</p>
+        <h2>Contactez FINA Beauty</h2>
+        <p>Une question sur un produit ? Envie de commander ? Écrivez-nous, on répond vite 💛</p>
+        <ul class="contact-list">
+          <li>🇸🇳 <a href="https://wa.me/221774641789" target="_blank" rel="noopener">WhatsApp Sénégal : +221 77 464 17 89</a></li>
+          <li>🇲🇦 <a href="https://wa.me/212781871090" target="_blank" rel="noopener">WhatsApp Maroc : +212 78 187 10 90</a></li>
+          <li>📞 <a href="tel:+221774641789">Appeler : +221 77 464 17 89</a></li>
+          <li>📍 Sénégal 🇸🇳 &amp; Maroc 🇲🇦</li>
+          <li>💳 Paiement : Wave · Orange Money · à la livraison</li>
+        </ul>
+      </div>
+      <form class="contact-form reveal" id="contact-form">
+        <label>Votre nom<input type="text" name="nom" required placeholder="Ex : Awa Diop" /></label>
+        <label>Téléphone / WhatsApp<input type="tel" name="tel" required placeholder="+221 ..." /></label>
+        <label>Votre message<textarea name="message" rows="4" required placeholder="Bonjour, je souhaite..."></textarea></label>
+        <button type="submit" class="btn btn-primary">Envoyer via WhatsApp 💬</button>
+        <p class="form-note">En cliquant, votre message s'ouvre dans WhatsApp prêt à envoyer.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== Pied de page ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#accueil" class="logo logo-light"><img src="images/emblem.svg" class="emblem" alt="" />FINA<span>Beauty</span></a>
+        <p>Cosmétiques naturels du Maroc 🌿<br />Livraison au Sénégal &amp; au Maroc.</p>
+        <div class="footer-social">
+          <a href="https://wa.me/221774641789" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+          <a href="#" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+          <a href="#" target="_blank" rel="noopener" aria-label="Facebook">📘</a>
+          <a href="#" target="_blank" rel="noopener" aria-label="TikTok">🎵</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Boutique</h4>
+        <a href="#categories">Catégories</a>
+        <a href="#boutique">Tous les produits</a>
+        <a href="#avis">Avis clientes</a>
+      </div>
+      <div class="footer-col">
+        <h4>Infos</h4>
+        <a href="#histoire">Notre histoire</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Paiement &amp; livraison</h4>
+        <span>💳 Wave · Orange Money</span>
+        <span>💵 À la livraison</span>
+        <span>🚚 Sénégal &amp; Maroc</span>
+      </div>
+    </div>
+    <p class="copyright">© 2026 FINA Beauty — Fait avec 💛 au Sénégal &amp; au Maroc</p>
+  </footer>
+
+  <!-- ===== Panier (tiroir) ===== -->
+  <div class="drawer-overlay" id="overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Panier">
+    <div class="cart-header">
+      <h3>🛍️ Mon panier</h3>
+      <button class="drawer-close" id="close-cart" aria-label="Fermer">✕</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-promo">
+        <input type="text" id="promo-input" placeholder="Code promo (ex : BIENVENUE)" />
+        <button id="apply-promo">OK</button>
+      </div>
+      <div class="cart-line"><span>Sous-total</span><span id="cart-subtotal">0 FCFA</span></div>
+      <div class="cart-line discount" id="discount-line" hidden><span>Réduction</span><span id="cart-discount">0 FCFA</span></div>
+      <div class="cart-total"><span>Total</span><strong id="cart-total">0 FCFA</strong></div>
+      <button class="btn btn-primary btn-block" id="checkout">Commander sur WhatsApp 💬</button>
+      <p class="cart-note">Paiement : Wave · Orange Money · à la livraison</p>
+    </div>
+  </aside>
+
+  <!-- ===== Favoris (tiroir) ===== -->
+  <aside class="fav-drawer" id="fav-drawer" aria-label="Favoris">
+    <div class="cart-header">
+      <h3>❤️ Mes favoris</h3>
+      <button class="drawer-close" id="close-fav" aria-label="Fermer">✕</button>
+    </div>
+    <div class="cart-items" id="fav-items"></div>
+  </aside>
+
+  <!-- ===== Aperçu rapide (modale) ===== -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="quick-modal" role="dialog" aria-modal="true">
+      <button class="modal-close" id="close-modal" aria-label="Fermer">✕</button>
+      <div class="modal-body" id="modal-body"><!-- généré par script.js --></div>
+    </div>
+  </div>
+
+  <!-- Bouton WhatsApp flottant -->
+  <a href="https://wa.me/221774641789" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+  <!-- Retour en haut -->
+  <button class="to-top" id="to-top" aria-label="Haut de page">↑</button>
+  <!-- Notification (toast) -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js?v=4"></script>
+</body>
+</html>

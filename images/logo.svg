@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 220" width="340" height="220" role="img" aria-label="FINA Beauty — Cosmétiques naturels du Maroc">
+  <defs><linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e7c87e"/><stop offset="1" stop-color="#bf8f2c"/></linearGradient></defs>
+  <!-- Emblème losange -->
+  <g transform="rotate(45 170 66)" fill="none" stroke="url(#gold)">
+    <rect x="143" y="39" width="54" height="54" rx="11" stroke-width="2.4"/>
+    <rect x="149" y="45" width="42" height="42" rx="9" stroke-width="1" opacity="0.5"/>
+  </g>
+  <g transform="translate(170,43)" fill="url(#gold)">
+    <ellipse cx="0" cy="-6.5" rx="2.8" ry="6.4"/>
+    <ellipse cx="0" cy="-6.5" rx="2.8" ry="6.4" transform="rotate(60)"/>
+    <ellipse cx="0" cy="-6.5" rx="2.8" ry="6.4" transform="rotate(120)"/>
+    <ellipse cx="0" cy="-6.5" rx="2.8" ry="6.4" transform="rotate(180)"/>
+    <ellipse cx="0" cy="-6.5" rx="2.8" ry="6.4" transform="rotate(240)"/>
+    <ellipse cx="0" cy="-6.5" rx="2.8" ry="6.4" transform="rotate(300)"/>
+    <circle r="2.6" fill="#fff7e6"/>
+  </g>
+  <text x="170" y="90" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="50" font-weight="700" fill="url(#gold)">F</text>
+  <!-- Nom -->
+  <text x="170" y="162" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="33" font-weight="700" letter-spacing="2.5" fill="url(#gold)">FINA BEAUTY</text>
+  <!-- Slogan -->
+  <text x="170" y="186" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="10" letter-spacing="4" fill="#caa15a">COSMÉTIQUES NATURELS · MAROC</text>
+</svg>
