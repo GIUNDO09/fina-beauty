@@ -54,6 +54,20 @@ const PRODUITS = [
   { id:26, nom:"Gofio El Sahari — Farine de Maïs (375g)", cat:"silhouette", prix:3500, photo:"images/GOFIO.png", img:"🌽", note:5.0, avis:13, badge:"new",
     desc:"Farine de maïs grillé Gofio El Sahari (375g), 100% naturelle, sans conservateurs. Aliment traditionnel saharien riche en énergie, consommé pour favoriser la prise de poids. À mélanger au lait, à l'eau ou à une boisson chaude." },
 
+  /* ===== Huiles végétales Souplesse (1500 F chacune) ===== */
+  { id:27, nom:"Huile de Fenugrec — Souplesse", cat:"huiles", prix:1500, photo:"images/huile-fenugrec.png", img:"🌱", note:5.0, avis:7, badge:null,
+    desc:"Huile de fenugrec Souplesse, 100% végétale. Fortifie les cheveux, favorise la pousse et nourrit la peau." },
+  { id:28, nom:"Huile d'Ail — Souplesse", cat:"huiles", prix:1500, photo:"images/huile-ail.png", img:"🧄", note:5.0, avis:6, badge:null,
+    desc:"Huile d'ail Souplesse, 100% végétale. Renforce les cheveux et aide à limiter la chute." },
+  { id:29, nom:"Huile de Vitamine E — Souplesse", cat:"huiles", prix:1500, photo:"images/huile-vitamine-e.png", img:"💛", note:5.0, avis:8, badge:null,
+    desc:"Huile de vitamine E Souplesse, 100% végétale. Antioxydante, nourrit et protège la peau et les cheveux." },
+  { id:30, nom:"Huile de Noix de Coco — Souplesse", cat:"huiles", prix:1500, photo:"images/huile-coco.png", img:"🥥", note:5.0, avis:9, badge:null,
+    desc:"Huile de noix de coco Souplesse, 100% végétale. Hydrate, fait briller les cheveux et adoucit la peau." },
+  { id:31, nom:"Huile d'Olive — Souplesse", cat:"huiles", prix:1500, photo:"images/huile-olive.png", img:"🫒", note:5.0, avis:8, badge:null,
+    desc:"Huile d'olive Souplesse, 100% végétale. Nourrit en profondeur cheveux et peau." },
+  { id:32, nom:"Huile de Curcuma — Souplesse", cat:"huiles", prix:1500, photo:"images/huile-curcuma.png", img:"🟠", note:5.0, avis:7, badge:null,
+    desc:"Huile de curcuma Souplesse, 100% végétale. Ravive l'éclat du teint, apaise et purifie la peau." },
+
   /* ===== EXEMPLES (à remplacer par tes vrais produits) ===== */
   { id:1,  nom:"Huile d'Argan pure",        cat:"visage",     prix:6500, img:"💧", note:4.9, avis:128, badge:"best",  desc:"100% pure du Maroc, nourrit et répare peau et cheveux. Pressée à froid." },
   { id:2,  nom:"Beurre de Karité brut",     cat:"corps",      prix:4000, img:"🌰", note:4.8, avis:96,  badge:"best",  desc:"Hydratation intense, idéal peau sèche, vergetures et cheveux secs." },
@@ -77,6 +91,7 @@ const CATEGORIES = [
   { cat:"parfum",     nom:"Parfums",      emoji:"🌸" },
   { cat:"bijoux",     nom:"Bijoux",       emoji:"💍" },
   { cat:"silhouette", nom:"Silhouette",   emoji:"✨" },
+  { cat:"huiles",     nom:"Huiles",       emoji:"🫗" },
   { cat:"all",        nom:"Tout voir",    emoji:"🛍️" },
 ];
 
@@ -88,7 +103,7 @@ let filtreCat = "all", recherche = "", tri = "default", promoActif = false;
 /* ===== Helpers ===== */
 const $ = s => document.querySelector(s);
 const fmt = n => n.toLocaleString("fr-FR") + " " + DEVISE;
-const labelCat = c => ({visage:"Soins visage",cheveux:"Cheveux",corps:"Corps",maquillage:"Maquillage",parfum:"Parfum",bijoux:"Bijoux",silhouette:"Silhouette"}[c]||c);
+const labelCat = c => ({visage:"Soins visage",cheveux:"Cheveux",corps:"Corps",maquillage:"Maquillage",parfum:"Parfum",bijoux:"Bijoux",silhouette:"Silhouette",huiles:"Huiles"}[c]||c);
 const etoiles = n => "★".repeat(Math.round(n)) + "☆".repeat(5-Math.round(n));
 const badgeHTML = b => b ? `<span class="p-badge ${b}">${{new:"Nouveau",best:"Best-seller",promo:"Promo"}[b]}</span>` : "";
 const visuel = p => p.photo ? `<img src="${p.photo}" alt="${p.nom}" loading="lazy" onerror="this.onerror=null;this.outerHTML='${p.img}'">` : p.img;  /* vraie photo si dispo, sinon icône de secours */
