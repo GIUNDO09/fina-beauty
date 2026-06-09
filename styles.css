@@ -400,6 +400,20 @@ h1,h2,h3,h4{color:#f3ead8}                          /* titres clairs */
 .trust-ticker-track span{display:inline-flex;align-items:center;gap:.35rem;color:#d6aa4e;font-size:.82rem;font-weight:500;letter-spacing:.2px;white-space:nowrap}
 @keyframes trustscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
+/* ===== Hero avec image de fond animée ===== */
+.hero{position:relative;overflow:hidden;min-height:580px;display:flex;align-items:center;padding:3rem 0;background:#14100c}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;animation:kenburns 24s ease-in-out infinite alternate}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(20,16,12,.96) 0%,rgba(20,16,12,.84) 28%,rgba(20,16,12,.42) 56%,rgba(20,16,12,.06) 100%)}
+.hero-inner{position:relative;z-index:2;display:block}
+.hero-text{max-width:560px}
+.hero-text h1{color:#fff}
+.hero-text .lead{color:#ece0cd}
+.hero-text .eyebrow{color:var(--gold)}
+.hero-stats strong{color:#fff}
+.hero-stats span{color:#c9b8a6}
+@keyframes kenburns{0%{transform:scale(1.06) translate(0,0)}100%{transform:scale(1.16) translate(-2%,-1.5%)}}
+@media(prefers-reduced-motion:reduce){.hero-bg{animation:none}}
+
 /* ===== Barre de navigation mobile (cachée sur ordi) ===== */
 .bottom-nav{display:none}
 
@@ -441,8 +455,11 @@ h1,h2,h3,h4{color:#f3ead8}                          /* titres clairs */
   .logo{font-size:1.5rem}
   .emblem{width:36px;height:36px}
 
-  /* ⚡ Compacter le HAUT pour voir les produits très vite */
-  .hero{padding:1.4rem 0 1.6rem;min-height:auto}
+  /* ⚡ Hero compact mais avec la belle image animée */
+  .hero{padding:2.2rem 0;min-height:380px}
+  .hero-bg{object-position:70% center}
+  .hero-overlay{background:linear-gradient(90deg,rgba(20,16,12,.93) 0%,rgba(20,16,12,.62) 58%,rgba(20,16,12,.32) 100%)}
+  .hero-text{max-width:100%}
   .hero-visual{display:none}            /* cartes décoratives masquées sur mobile */
   .hero h1{font-size:1.85rem;margin-bottom:.6rem}
   .hero .lead{font-size:.98rem;margin-bottom:1rem}
