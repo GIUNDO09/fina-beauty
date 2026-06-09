@@ -73,6 +73,9 @@ const PRODUITS = [
   { id:35, nom:"Mélange d'Huiles Cheveux — Spécial FINA", cat:"huiles", prix:2500, photo:"images/huilemelangecheveux.png", img:"💆‍♀️", note:5.0, avis:22, badge:"best",
     desc:"Le mélange signature FINA pour cheveux : une synergie d'huiles végétales qui nourrit le cuir chevelu, fortifie les cheveux et favorise la pousse. La recette beauté maison de FINA, pour des cheveux forts et brillants." },
 
+  { id:36, nom:"Huile d'Akpi (Djansang)", cat:"huiles", prix:1500, photo:"images/huile-akpi.png", img:"🌰", note:5.0, avis:9, badge:null,
+    desc:"Huile d'Akpi (djansang), 100% naturelle. Traditionnellement utilisée en Afrique de l'Ouest pour nourrir la peau et les cheveux." },
+
   { id:33, nom:"MOIKA — Pads Acide Kojique & Curcuma (50)", cat:"visage", prix:8000, photo:"images/MOIKA.png", img:"🟡", note:5.0, avis:15, badge:"new",
     desc:"Disques nettoyants MOIKA à l'acide kojique et au curcuma (50 pads). Éclaircit, illumine et revitalise la peau. Formule quotidienne pour un teint lumineux et unifié, aide à atténuer les taches." },
 
