@@ -334,16 +334,53 @@ overlay.addEventListener("click", fermerTiroirs);
 $("#open-search").addEventListener("click", ()=>{ $("#searchbar").classList.toggle("open"); if($("#searchbar").classList.contains("open")) $("#search-input").focus(); });
 $("#close-search").addEventListener("click", ()=>{ $("#searchbar").classList.remove("open"); recherche=""; $("#search-input").value=""; afficherProduits(); });
 
-/* ===== Commande WhatsApp ===== */
+/* ===== Commande : étape de validation ===== */
+function totalCommande(){
+  const sub = panier.reduce((s,i)=>s+i.prix*i.qte,0);
+  const disc = promoActif ? Math.round(sub*PROMO_PCT) : 0;
+  return { sub, disc, total: sub-disc };
+}
+const coModal = $("#checkout-modal");
 $("#checkout").addEventListener("click", () => {
   if(panier.length===0){ toast("Votre panier est vide 🛍️"); return; }
+  $("#co-total").textContent = fmt(totalCommande().total);
+  cartD.classList.remove("open");
+  overlay.classList.remove("open");
+  coModal.classList.add("open");
+});
+$("#checkout-close").addEventListener("click", ()=>coModal.classList.remove("open"));
+coModal.addEventListener("click", e=>{ if(e.target===coModal) coModal.classList.remove("open"); });
+
+/* Afficher l'adresse seulement si Livraison */
+document.querySelectorAll('input[name="reception"]').forEach(r => r.addEventListener("change", () => {
+  const liv = document.querySelector('input[name="reception"]:checked').value === "Livraison";
+  const addr = $("#co-address");
+  addr.hidden = !liv;
+  addr.querySelector('[name=ville]').required = liv;
+  addr.querySelector('[name=adresse]').required = liv;
+}));
+
+/* Envoi de la commande complète sur WhatsApp */
+$("#checkout-form").addEventListener("submit", e => {
+  e.preventDefault();
+  const f = e.target;
+  const reception = f.reception.value;
+  const paiement = f.paiement.value;
+  const t = totalCommande();
   let msg = "Bonjour FINA Beauty 🌿, je souhaite commander :%0A%0A";
-  let sub=0;
-  panier.forEach(i => { msg += `• ${i.nom} x${i.qte} — ${fmt(i.prix*i.qte)}%0A`; sub+=i.prix*i.qte; });
-  const disc = promoActif ? Math.round(sub*PROMO_PCT) : 0;
-  if(promoActif) msg += `%0ACode BIENVENUE : -${fmt(disc)}`;
-  msg += `%0A%0A*Total : ${fmt(sub-disc)}*%0A%0AMode de paiement : (Wave / Orange Money / à la livraison)%0AMode de réception : (retrait / livraison)`;
+  panier.forEach(i => { msg += `• ${i.nom} x${i.qte} — ${fmt(i.prix*i.qte)}%0A`; });
+  if(t.disc) msg += `Code BIENVENUE : -${fmt(t.disc)}%0A`;
+  msg += `*Total : ${fmt(t.total)}*%0A%0A`;
+  msg += `👤 Nom : ${encodeURIComponent(f.nom.value)}%0A`;
+  msg += `📞 Tél : ${encodeURIComponent(f.tel.value)}%0A`;
+  msg += `📦 Réception : ${encodeURIComponent(reception)}%0A`;
+  if(reception === "Livraison"){
+    msg += `📍 Adresse : ${encodeURIComponent(f.adresse.value)} — ${encodeURIComponent(f.ville.value)}%0A`;
+  }
+  msg += `💳 Paiement : ${encodeURIComponent(paiement)}`;
   window.open(`https://wa.me/${WHATSAPP}?text=${msg}`, "_blank");
+  coModal.classList.remove("open");
+  toast("💬 Ouverture de WhatsApp...");
 });
 
 /* ===== Formulaire contact → WhatsApp ===== */

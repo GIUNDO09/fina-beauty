@@ -17,7 +17,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="FINA Beauty" />
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-  <link rel="stylesheet" href="styles.css?v=5" />
+  <link rel="stylesheet" href="styles.css?v=6" />
 </head>
 <body>
 
@@ -309,10 +309,58 @@
       <div class="cart-line"><span>Sous-total</span><span id="cart-subtotal">0 FCFA</span></div>
       <div class="cart-line discount" id="discount-line" hidden><span>Réduction</span><span id="cart-discount">0 FCFA</span></div>
       <div class="cart-total"><span>Total</span><strong id="cart-total">0 FCFA</strong></div>
-      <button class="btn btn-primary btn-block" id="checkout">Commander sur WhatsApp 💬</button>
+      <button class="btn btn-primary btn-block" id="checkout">Passer la commande 🛒</button>
       <p class="cart-note">Paiement : Wave · Orange Money · à la livraison</p>
     </div>
   </aside>
+
+  <!-- ===== Étape de commande ===== -->
+  <div class="checkout-overlay" id="checkout-modal" role="dialog" aria-modal="true" aria-label="Finaliser la commande">
+    <div class="checkout-box">
+      <div class="checkout-head">
+        <h3>Finaliser ma commande 🛍️</h3>
+        <button class="drawer-close" id="checkout-close" aria-label="Fermer">✕</button>
+      </div>
+      <form class="checkout-form" id="checkout-form">
+        <label>Votre nom
+          <input type="text" name="nom" required placeholder="Ex : Awa Diop" />
+        </label>
+        <label>Téléphone / WhatsApp
+          <input type="tel" name="tel" required placeholder="Ex : +221 77 000 00 00" />
+        </label>
+
+        <div class="co-group">
+          <span class="co-label">📦 Mode de réception</span>
+          <div class="co-options">
+            <label class="co-opt"><input type="radio" name="reception" value="Retrait sur place" checked /> <span>🏠 Retrait sur place</span></label>
+            <label class="co-opt"><input type="radio" name="reception" value="Livraison" /> <span>🚚 Livraison à mon adresse</span></label>
+          </div>
+        </div>
+
+        <div class="co-address" id="co-address" hidden>
+          <label>Ville
+            <input type="text" name="ville" placeholder="Ex : Dakar" />
+          </label>
+          <label>Adresse / Quartier / Repère
+            <input type="text" name="adresse" placeholder="Quartier, rue, point de repère..." />
+          </label>
+        </div>
+
+        <div class="co-group">
+          <span class="co-label">💳 Moyen de paiement</span>
+          <div class="co-options">
+            <label class="co-opt"><input type="radio" name="paiement" value="Wave" checked /> <span>🌊 Wave</span></label>
+            <label class="co-opt"><input type="radio" name="paiement" value="Orange Money" /> <span>🟠 Orange Money</span></label>
+            <label class="co-opt"><input type="radio" name="paiement" value="À la livraison (espèces)" /> <span>💵 À la livraison (espèces)</span></label>
+          </div>
+        </div>
+
+        <div class="co-total"><span>Total à payer</span><strong id="co-total">0 FCFA</strong></div>
+        <button type="submit" class="btn btn-primary btn-block">Envoyer la commande sur WhatsApp 💬</button>
+        <p class="cart-note">Vous finaliserez les détails directement avec FINA sur WhatsApp.</p>
+      </form>
+    </div>
+  </div>
 
   <!-- ===== Favoris (tiroir) ===== -->
   <aside class="fav-drawer" id="fav-drawer" aria-label="Favoris">
@@ -362,6 +410,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=26"></script>
+  <script src="script.js?v=27"></script>
 </body>
 </html>
