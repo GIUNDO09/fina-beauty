@@ -48,6 +48,9 @@ const PRODUITS = [
   { id:24, nom:"Pack YOKEBE Complet (Crème + Huile + Sirop)", cat:"silhouette", prix:15000, photo:"images/GAME-YOKEBE.png", img:"🎁", note:5.0, avis:11, badge:"best",
     desc:"Le coffret complet de la routine YOKEBE : crème + huile (125 ml) + sirop (125 ml), 100% naturel, réservé aux adultes. Toute la gamme galbe & fermeté en une seule commande, à prix groupé." },
 
+  { id:25, nom:"Coffret Disaar Vitamine C (5 produits)", cat:"visage", prix:8000, photo:"images/DISAAR.png", img:"🍊", note:5.0, avis:16, badge:"best",
+    desc:"Coffret complet Disaar à la Vitamine C & acide hyaluronique : nettoyant visage, sérum éclat, sérum whitening, crème hydratante et soin contour des yeux. Pour un teint lumineux et unifié, une peau repulpée et hydratée. Anti-taches, anti-rides et anti-cernes." },
+
   /* ===== EXEMPLES (à remplacer par tes vrais produits) ===== */
   { id:1,  nom:"Huile d'Argan pure",        cat:"visage",     prix:6500, img:"💧", note:4.9, avis:128, badge:"best",  desc:"100% pure du Maroc, nourrit et répare peau et cheveux. Pressée à froid." },
   { id:2,  nom:"Beurre de Karité brut",     cat:"corps",      prix:4000, img:"🌰", note:4.8, avis:96,  badge:"best",  desc:"Hydratation intense, idéal peau sèche, vergetures et cheveux secs." },
