@@ -45,6 +45,9 @@ const PRODUITS = [
   { id:23, nom:"Sirop YOKEBE — 125 ml", cat:"silhouette", prix:5000, photo:"images/GAME-YOKEBE.png", img:"🍶", note:5.0, avis:8, badge:"new",
     desc:"Sirop YOKEBE (125 ml), complément naturel (réservé aux adultes) traditionnellement utilisé pour favoriser la prise de poids. À consommer selon les indications de l'emballage." },
 
+  { id:24, nom:"Pack YOKEBE Complet (Crème + Huile + Sirop)", cat:"silhouette", prix:15000, photo:"images/GAME-YOKEBE.png", img:"🎁", note:5.0, avis:11, badge:"best",
+    desc:"Le coffret complet de la routine YOKEBE : crème + huile (125 ml) + sirop (125 ml), 100% naturel, réservé aux adultes. Toute la gamme galbe & fermeté en une seule commande, à prix groupé." },
+
   /* ===== EXEMPLES (à remplacer par tes vrais produits) ===== */
   { id:1,  nom:"Huile d'Argan pure",        cat:"visage",     prix:6500, img:"💧", note:4.9, avis:128, badge:"best",  desc:"100% pure du Maroc, nourrit et répare peau et cheveux. Pressée à froid." },
   { id:2,  nom:"Beurre de Karité brut",     cat:"corps",      prix:4000, img:"🌰", note:4.8, avis:96,  badge:"best",  desc:"Hydratation intense, idéal peau sèche, vergetures et cheveux secs." },
