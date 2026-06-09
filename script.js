@@ -27,13 +27,13 @@ const PRODUITS = [
   { id:17, nom:"Bracelet Ayat al-Kursi (Enfant)", cat:"bijoux", prix:3500, photo:"images/BRACELET-KURSI-ENFANT.png", img:"💍", note:5.0, avis:14, badge:"new",
     desc:"Version enfant du bracelet Ayat al-Kursi : doux, léger et ajustable pour les petits poignets. Acier inoxydable hypoallergénique (4 mm), résistant à l'eau et à l'usure, ne noircit pas. Belle idée cadeau éducative et spirituelle, livré dans une jolie boîte prête à offrir." },
 
-  { id:18, nom:"Savon Hikma Carotte — 400g", cat:"visage", prix:2500, photo:"images/hikma-carrotes.png", img:"🥕", note:5.0, avis:9, badge:"new",
+  { id:18, nom:"Savon Hikma Carotte — 400g", cat:"corps", prix:2500, photo:"images/hikma-carrotes.png", img:"🥕", note:5.0, avis:9, badge:"new",
     desc:"Savon Hikma à la carotte (400g). Riche en bêta-carotène, il unifie le teint, ravive l'éclat et donne bonne mine. 100% naturel et artisanal." },
 
-  { id:19, nom:"Savon Hikma Curcuma — 400g", cat:"visage", prix:2500, photo:"images/hikma-curcuma.png", img:"🟡", note:5.0, avis:7, badge:"new",
+  { id:19, nom:"Savon Hikma Curcuma — 400g", cat:"corps", prix:2500, photo:"images/hikma-curcuma.png", img:"🟡", note:5.0, avis:7, badge:"new",
     desc:"Savon Hikma au curcuma (400g). Purifiant et anti-imperfections, il atténue les taches et illumine la peau. 100% naturel et artisanal." },
 
-  { id:20, nom:"Savon Hikma Miel — 400g", cat:"visage", prix:2500, photo:"images/hikma-miel.png", img:"🍯", note:5.0, avis:8, badge:"new",
+  { id:20, nom:"Savon Hikma Miel — 400g", cat:"corps", prix:2500, photo:"images/hikma-miel.png", img:"🍯", note:5.0, avis:8, badge:"new",
     desc:"Savon Hikma au miel (400g). Doux et hydratant, il nourrit et adoucit la peau en profondeur. 100% naturel et artisanal." },
 
   { id:21, nom:"Crème YOKEBE — Galbe & Fermeté", cat:"silhouette", prix:5000, photo:"images/GAME-YOKEBE.png", img:"🧴", note:5.0, avis:14, badge:"new",
