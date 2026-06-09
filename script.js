@@ -70,7 +70,7 @@ const PRODUITS = [
   { id:34, nom:"Huile de Ricin — Souplesse", cat:"huiles", prix:1500, photo:"images/huile-ricin.png", img:"🌰", note:5.0, avis:11, badge:null,
     desc:"Huile de ricin Souplesse, 100% végétale. Stimule la pousse des cheveux, cils et sourcils, et nourrit la peau en profondeur." },
 
-  { id:33, nom:"MOIKA — Pads Acide Kojique & Curcuma (50)", cat:"visage", prix:5000, photo:"images/MOIKA.png", img:"🟡", note:5.0, avis:15, badge:"new",
+  { id:33, nom:"MOIKA — Pads Acide Kojique & Curcuma (50)", cat:"visage", prix:8000, photo:"images/MOIKA.png", img:"🟡", note:5.0, avis:15, badge:"new",
     desc:"Disques nettoyants MOIKA à l'acide kojique et au curcuma (50 pads). Éclaircit, illumine et revitalise la peau. Formule quotidienne pour un teint lumineux et unifié, aide à atténuer les taches." },
 
   /* ===== EXEMPLES (à remplacer par tes vrais produits) ===== */
