@@ -22,6 +22,7 @@
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
+html,body{overflow-x:clip}  /* empêche le défilement horizontal (menu hors-écran, marquee) sans casser le sticky */
 body{font-family:'Jost',sans-serif;color:var(--text);background:var(--cream);line-height:1.6;overflow-x:hidden}
 .container{width:92%;max-width:1760px;margin:0 auto}
 h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1.15;color:var(--brown)}
@@ -400,4 +401,9 @@ h1,h2,h3,h4{color:#f3ead8}                          /* titres clairs */
 
   /* Meilleures ventes : cartes un peu plus étroites pour le swipe */
   .bs-track .product{flex-basis:200px}
+
+  /* En-tête allégé : recherche & favoris sont dans la barre du bas */
+  .header #open-search, .header #open-fav{display:none}
+  .logo{font-size:1.5rem}
+  .emblem{width:36px;height:36px}
 }
