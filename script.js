@@ -27,6 +27,15 @@ const PRODUITS = [
   { id:17, nom:"Bracelet Ayat al-Kursi (Enfant)", cat:"bijoux", prix:3500, photo:"images/BRACELET-KURSI-ENFANT.png", img:"💍", note:5.0, avis:14, badge:"new",
     desc:"Version enfant du bracelet Ayat al-Kursi : doux, léger et ajustable pour les petits poignets. Acier inoxydable hypoallergénique (4 mm), résistant à l'eau et à l'usure, ne noircit pas. Belle idée cadeau éducative et spirituelle, livré dans une jolie boîte prête à offrir." },
 
+  { id:18, nom:"Savon Hikma Carotte — 400g", cat:"visage", prix:2500, photo:"images/savon-hikma-carotte.png", img:"🥕", note:5.0, avis:9, badge:"new",
+    desc:"Savon Hikma à la carotte (400g). Riche en bêta-carotène, il unifie le teint, ravive l'éclat et donne bonne mine. 100% naturel et artisanal." },
+
+  { id:19, nom:"Savon Hikma Curcuma — 400g", cat:"visage", prix:2500, photo:"images/savon-hikma-curcuma.png", img:"🟡", note:5.0, avis:7, badge:"new",
+    desc:"Savon Hikma au curcuma (400g). Purifiant et anti-imperfections, il atténue les taches et illumine la peau. 100% naturel et artisanal." },
+
+  { id:20, nom:"Savon Hikma Miel — 400g", cat:"visage", prix:2500, photo:"images/savon-hikma-miel.png", img:"🍯", note:5.0, avis:8, badge:"new",
+    desc:"Savon Hikma au miel (400g). Doux et hydratant, il nourrit et adoucit la peau en profondeur. 100% naturel et artisanal." },
+
   /* ===== EXEMPLES (à remplacer par tes vrais produits) ===== */
   { id:1,  nom:"Huile d'Argan pure",        cat:"visage",     prix:6500, img:"💧", note:4.9, avis:128, badge:"best",  desc:"100% pure du Maroc, nourrit et répare peau et cheveux. Pressée à froid." },
   { id:2,  nom:"Beurre de Karité brut",     cat:"corps",      prix:4000, img:"🌰", note:4.8, avis:96,  badge:"best",  desc:"Hydratation intense, idéal peau sèche, vergetures et cheveux secs." },
