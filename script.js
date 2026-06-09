@@ -18,8 +18,8 @@ const PRODUITS = [
   { id:14, nom:"Savon Noir Marocain — 250g", cat:"corps", prix:1500, photo:"images/savon-noir.png", img:"🧴", note:4.9, avis:18, badge:"best",
     desc:"Savon noir marocain 100% naturel et artisanal (250g). Pâte traditionnelle à base d'olive, utilisée au hammam pour nettoyer, purifier et préparer la peau au gommage. Laisse la peau douce, nette et éclatante. Tradition authentique du Maroc." },
 
-  { id:15, nom:"Savon Noir Marocain — 500g", cat:"corps", prix:2500, photo:"images/savon-noir-250g-2500.png", img:"🧴", note:4.9, avis:12, badge:null,
-    desc:"Grand format 500g du savon noir marocain 100% naturel et artisanal. Pâte d'olive du hammam pour nettoyer, purifier et exfolier la peau. Idéal pour un usage régulier en famille. Tradition authentique du Maroc." },
+  { id:15, nom:"Savon Noir Marocain — 400g", cat:"corps", prix:2500, photo:"images/savon-noir-250g-2500.png", img:"🧴", note:4.9, avis:12, badge:null,
+    desc:"Grand format 400g du savon noir marocain 100% naturel et artisanal. Pâte d'olive du hammam pour nettoyer, purifier et exfolier la peau. Idéal pour un usage régulier en famille. Tradition authentique du Maroc." },
 
   { id:16, nom:"Bracelet Ayat al-Kursi (Adulte)", cat:"bijoux", prix:5000, photo:"images/BRACELET-KURSI.png", img:"💍", note:5.0, avis:31, badge:"new",
     desc:"Bracelet jonc gravé du verset Ayat al-Kursi (le Trône), en acier inoxydable haute qualité. Ouverture ajustable homme & femme, résistant à l'eau et à l'usure, gravure arabe détaillée. Disponible en 4 couleurs : or, argent, noir, or rose. Belle idée cadeau spirituelle, livré en emballage premium." },
