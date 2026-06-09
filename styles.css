@@ -391,6 +391,9 @@ h1,h2,h3,h4{color:#f3ead8}                          /* titres clairs */
 .co-total{display:flex;justify-content:space-between;align-items:center;padding:.85rem 0;border-top:1px solid #3a2f22;font-size:1.05rem;color:#ece0cd}
 .co-total strong{font-size:1.35rem;color:#d6aa4e}
 
+/* Lien "Voir le détail" (visible seulement sur mobile, quand la description est masquée) */
+.see-more{display:none;background:none;border:none;color:#d6aa4e;font-family:'Jost',sans-serif;font-size:.78rem;font-weight:600;cursor:pointer;padding:0;margin-top:.15rem;text-align:left}
+
 /* ===== Barre de navigation mobile (cachée sur ordi) ===== */
 .bottom-nav{display:none}
 
@@ -417,9 +420,12 @@ h1,h2,h3,h4{color:#f3ead8}                          /* titres clairs */
   /* Cartes produits plus nettes et plus tactiles */
   .product-img{height:158px}
   .product-body{padding:.85rem .85rem 1rem}
-  .product h3{font-size:1.18rem}
+  .product h3{font-size:1.18rem;cursor:pointer}
   .price{font-size:1.05rem}
   .add-btn{padding:.55rem .8rem;font-size:.82rem}
+  /* Description masquée : visible en appuyant sur le produit (fiche détail) */
+  .product-desc{display:none}
+  .see-more{display:inline-block}
 
   /* Meilleures ventes : cartes un peu plus étroites pour le swipe */
   .bs-track .product{flex-basis:200px}

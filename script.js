@@ -155,9 +155,10 @@ function cardHTML(p){
       </div>
       <div class="product-body">
         <span class="product-cat">${labelCat(p.cat)}</span>
-        <h3>${p.nom}</h3>
+        <h3 data-view="${p.id}">${p.nom}</h3>
         <div class="product-stars">${etoiles(p.note)} <small>(${p.avis})</small></div>
         <p class="product-desc">${p.desc}</p>
+        <button class="see-more" data-view="${p.id}">Voir le détail →</button>
         <div class="product-foot">
           <span class="price">${p.oldPrix?`<span class="old">${fmt(p.oldPrix)}</span>`:""}${fmt(p.prix)}</span>
           <button class="add-btn" data-id="${p.id}">+ Ajouter</button>
