@@ -56,6 +56,7 @@ function rendre(){
         <div class="price">${old}${fmt(p.prix)}</div>
       </div>
       <div class="acts">
+        <button class="btn btn-ghost" data-notify="${p.id}" title="Prévenir mes abonnées">📬</button>
         <button class="btn btn-ghost" data-edit="${p.id}">✏️</button>
         <button class="btn btn-danger" data-del="${p.id}">🗑️</button>
       </div>
@@ -71,10 +72,29 @@ $("#add").addEventListener("click", () => ouvrirForm(null));
 $("#form-close").addEventListener("click", fermerForm);
 $("#overlay").addEventListener("click", e => { if(e.target === $("#overlay")) fermerForm(); });
 $("#plist").addEventListener("click", e => {
-  const ed = e.target.closest("[data-edit]"), de = e.target.closest("[data-del]");
+  const ed = e.target.closest("[data-edit]"), de = e.target.closest("[data-del]"), no = e.target.closest("[data-notify]");
   if(ed) ouvrirForm(PRODUITS.find(p => p.id === +ed.dataset.edit));
   if(de) supprimer(+de.dataset.del);
+  if(no) notifier(+no.dataset.notify);
 });
+
+/* ---------- Prévenir les abonnées (e-mail Brevo) ---------- */
+async function notifier(id){
+  const p = PRODUITS.find(x => x.id === id); if(!p) return;
+  if(!confirm("📬 Envoyer un e-mail (avec la photo) à toutes tes abonnées pour « " + p.nom + " » ?")) return;
+  const { data } = await SB.auth.getSession();
+  const token = data && data.session ? data.session.access_token : null;
+  if(!token){ alert("Reconnecte-toi puis réessaie."); return; }
+  try{
+    const r = await fetch("/api/notify", {
+      method: "POST", headers: { "Content-Type":"application/json" },
+      body: JSON.stringify({ token, product: { nom:p.nom, prix:p.prix, photo:p.photo, description:p.description } })
+    });
+    const j = await r.json();
+    if(j.ok) alert("✅ E-mail envoyé à toutes tes abonnées !");
+    else alert("⚠️ " + (j.error || "Échec de l'envoi."));
+  }catch(err){ alert("⚠️ Erreur : " + err); }
+}
 
 function ouvrirForm(p){
   $("#form-title").textContent = p ? "Modifier le produit" : "Nouveau produit";
