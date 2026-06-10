@@ -88,7 +88,9 @@ const PRODUITS = [
   { id:40, nom:"Lèvre Rose — Rothie", cat:"visage", prix:1000, photo:"images/levre-rose.png", img:"💋", note:5.0, avis:10, badge:"new",
     desc:"Soin « Lèvre Rose » de Rothie : ravive et rosit naturellement les lèvres foncées pour des lèvres douces, hydratées et roses. À appliquer quotidiennement." },
 
-  { id:41, nom:"Set Coiffure Pro 9-en-1 (2200W)", cat:"cheveux", prix:18000, photo:"images/maquillage/1.jpg", img:"💇‍♀️", note:5.0, avis:14, badge:"new",
+  { id:41, nom:"Set Coiffure Pro 9-en-1 (2200W)", cat:"cheveux", prix:18000, photo:"images/maquillage/1.jpg",
+    photos:["images/maquillage/1.jpg","images/maquillage/2.jpg","images/maquillage/3.jpg","images/maquillage/4.jpg","images/maquillage/5.jpg","images/maquillage/6.jpg"],
+    img:"💇‍♀️", note:5.0, avis:14, badge:"new",
     desc:"Coffret de coiffure professionnel 9-en-1 (2200W) : sèche-cheveux puissant, lisseur, fer à friser, brosse soufflante, peignes, embouts et accessoires. Adapté à tous types de cheveux. Un vrai coiffage de salon à la maison." },
 
   { id:33, nom:"MOIKA — Pads Acide Kojique & Curcuma (50)", cat:"visage", prix:8000, photo:"images/MOIKA.png", img:"🟡", note:5.0, avis:15, badge:"new",
@@ -120,6 +122,19 @@ const labelCat = c => ({visage:"Soins visage",cheveux:"Cheveux",corps:"Corps",ma
 const etoiles = n => "★".repeat(Math.round(n)) + "☆".repeat(5-Math.round(n));
 const badgeHTML = b => b ? `<span class="p-badge ${b}">${{new:"Nouveau",best:"Best-seller",promo:"Promo"}[b]}</span>` : "";
 const visuel = p => p.photo ? `<img src="${p.photo}" alt="${p.nom}" loading="lazy" onerror="this.onerror=null;this.outerHTML='${p.img}'">` : p.img;  /* vraie photo si dispo, sinon icône de secours */
+/* Galerie d'images (avec flèches) pour la fiche produit */
+function galerie(p){
+  const imgs = (p.photos && p.photos.length) ? p.photos : (p.photo ? [p.photo] : null);
+  if(!imgs) return p.img;
+  if(imgs.length === 1) return `<img src="${imgs[0]}" alt="${p.nom}">`;
+  return `<div class="gallery" data-idx="0" data-photos='${JSON.stringify(imgs)}'>
+      <img class="gallery-img" src="${imgs[0]}" alt="${p.nom}" />
+      <button class="gal-arrow gal-prev" aria-label="Image précédente">‹</button>
+      <button class="gal-arrow gal-next" aria-label="Image suivante">›</button>
+      <span class="gal-count">1/${imgs.length}</span>
+      <div class="gal-dots">${imgs.map((_,i)=>`<span class="gal-dot${i===0?' active':''}" data-go="${i}"></span>`).join("")}</div>
+    </div>`;
+}
 
 /* ===== Catégories ===== */
 $("#cat-grid").innerHTML = CATEGORIES.map(c => `
@@ -297,7 +312,7 @@ $("#fav-items").addEventListener("click", e => {
 function ouvrirApercu(id){
   const p = PRODUITS.find(x=>x.id===id); if(!p) return;
   $("#modal-body").innerHTML = `
-    <div class="modal-img">${visuel(p)}</div>
+    <div class="modal-img">${galerie(p)}</div>
     <div class="modal-info">
       <span class="product-cat">${labelCat(p.cat)}</span>
       <h2>${p.nom}</h2>
@@ -312,6 +327,21 @@ function ouvrirApercu(id){
   $("#modal-overlay").classList.add("open");
 }
 $("#modal-body").addEventListener("click", e => {
+  // Navigation de la galerie (flèches / points) — sans fermer la fiche
+  const prev=e.target.closest(".gal-prev"), next=e.target.closest(".gal-next"), dot=e.target.closest("[data-go]");
+  if(prev||next||dot){
+    const gal=$(".gallery"); if(!gal) return;
+    const imgs=JSON.parse(gal.dataset.photos);
+    let idx=+gal.dataset.idx;
+    if(prev) idx=(idx-1+imgs.length)%imgs.length;
+    if(next) idx=(idx+1)%imgs.length;
+    if(dot) idx=+dot.dataset.go;
+    gal.dataset.idx=idx;
+    gal.querySelector(".gallery-img").src=imgs[idx];
+    gal.querySelector(".gal-count").textContent=(idx+1)+"/"+imgs.length;
+    gal.querySelectorAll(".gal-dot").forEach((d,i)=>d.classList.toggle("active",i===idx));
+    return;
+  }
   const add=e.target.closest("[data-id]"), fav=e.target.closest("[data-fav]");
   if(add){ ajouter(+add.dataset.id); fermerModale(); }
   if(fav){ toggleFav(+fav.dataset.fav); fermerModale(); }
