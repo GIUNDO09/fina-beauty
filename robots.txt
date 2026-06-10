@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fina-beauty-omega.vercel.app/sitemap.xml
