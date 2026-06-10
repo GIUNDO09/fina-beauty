@@ -6,3 +6,8 @@ desktop.ini
 # Dossiers temporaires
 *.tmp
 *~
+
+# Doublons Windows ("- Copie")
+* - Copie.*
+*- Copie.*
+*- Copy.*
