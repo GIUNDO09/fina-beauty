@@ -37,7 +37,7 @@ jobs:
           BREVO_LIST_ID: ${{ secrets.BREVO_LIST_ID }}
           BREVO_SENDER: ${{ secrets.BREVO_SENDER }}
           MSG: ${{ steps.check.outputs.msg }}
-          SITE_URL: "https://fina-beauty-omega.vercel.app/"
+          SITE_URL: "https://finabeauty.store/"
         run: |
           if [ -z "$BREVO_API_KEY" ] || [ -z "$BREVO_LIST_ID" ] || [ -z "$BREVO_SENDER" ]; then
             echo "Brevo pas encore configure (secrets manquants) -> aucun e-mail envoye."
