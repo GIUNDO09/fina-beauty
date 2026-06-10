@@ -10,8 +10,15 @@ let PRODUITS = [];
 $("#login-form").addEventListener("submit", async e => {
   e.preventDefault();
   const msg = $("#login-msg"); msg.className = "msg"; msg.textContent = "Connexion…";
-  const { error } = await SB.auth.signInWithPassword({ email: $("#email").value.trim(), password: $("#password").value });
-  if(error){ msg.className = "msg err"; msg.textContent = "E-mail ou mot de passe incorrect."; return; }
+  const { error } = await SB.auth.signInWithPassword({ email: $("#email").value.trim().toLowerCase(), password: $("#password").value });
+  if(error){
+    msg.className = "msg err";
+    const m = (error.message || "").toLowerCase();
+    if(m.includes("not confirmed")) msg.textContent = "Compte non confirmé : confirme l'utilisateur dans Supabase (Authentication → Users).";
+    else if(m.includes("invalid login")) msg.textContent = "E-mail ou mot de passe incorrect (vérifie l'orthographe de l'e-mail).";
+    else msg.textContent = "Erreur : " + error.message;
+    return;
+  }
   demarrer();
 });
 $("#logout").addEventListener("click", async () => { await SB.auth.signOut(); location.reload(); });
