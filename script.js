@@ -1,4 +1,5 @@
 /* ===== FINA Beauty — Logique du site (version pro) ===== */
+/* (test envoi automatique newsletter — sera retire) */
 
 /* 📞 À PERSONNALISER : votre numéro WhatsApp (format international, sans + ni espaces) */
 const WHATSAPP = "221774641789"; // Sénégal (principal). Maroc : 212781871090
