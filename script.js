@@ -88,6 +88,9 @@ const PRODUITS = [
   { id:40, nom:"Lèvre Rose — Rothie", cat:"visage", prix:1000, photo:"images/levre-rose.png", img:"💋", note:5.0, avis:10, badge:"new",
     desc:"Soin « Lèvre Rose » de Rothie : ravive et rosit naturellement les lèvres foncées pour des lèvres douces, hydratées et roses. À appliquer quotidiennement." },
 
+  { id:41, nom:"Set Coiffure Pro 9-en-1 (2200W)", cat:"cheveux", prix:18000, photo:"images/maquillage/1.jpg", img:"💇‍♀️", note:5.0, avis:14, badge:"new",
+    desc:"Coffret de coiffure professionnel 9-en-1 (2200W) : sèche-cheveux puissant, lisseur, fer à friser, brosse soufflante, peignes, embouts et accessoires. Adapté à tous types de cheveux. Un vrai coiffage de salon à la maison." },
+
   { id:33, nom:"MOIKA — Pads Acide Kojique & Curcuma (50)", cat:"visage", prix:8000, photo:"images/MOIKA.png", img:"🟡", note:5.0, avis:15, badge:"new",
     desc:"Disques nettoyants MOIKA à l'acide kojique et au curcuma (50 pads). Éclaircit, illumine et revitalise la peau. Formule quotidienne pour un teint lumineux et unifié, aide à atténuer les taches." },
 
@@ -97,6 +100,7 @@ const PRODUITS = [
 const CATEGORIES = [
   { cat:"visage",     nom:"Soins visage", emoji:"🧖‍♀️" },
   { cat:"corps",      nom:"Corps",        emoji:"🧴" },
+  { cat:"cheveux",    nom:"Cheveux",      emoji:"💇‍♀️" },
   { cat:"huiles",     nom:"Huiles",       emoji:"🫗" },
   { cat:"bijoux",     nom:"Bijoux",       emoji:"💍" },
   { cat:"silhouette", nom:"Silhouette",   emoji:"✨" },
