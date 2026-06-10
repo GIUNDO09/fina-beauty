@@ -85,6 +85,9 @@ const PRODUITS = [
   { id:39, nom:"Tirelire Artisanale en Bois", cat:"artisanat", prix:1500, photo:"images/tire-lire.png", img:"🪵", note:5.0, avis:8, badge:"new",
     desc:"Tirelire artisanale en bois, gravée à la main. Forme hexagonale élégante avec motif laurier. Parfaite pour économiser ou offrir — un joli objet déco fait main." },
 
+  { id:40, nom:"Lèvre Rose — Rothie", cat:"visage", prix:3000, photo:"images/levre-rose.png", img:"💋", note:5.0, avis:10, badge:"new",
+    desc:"Soin « Lèvre Rose » de Rothie : ravive et rosit naturellement les lèvres foncées pour des lèvres douces, hydratées et roses. À appliquer quotidiennement." },
+
   { id:33, nom:"MOIKA — Pads Acide Kojique & Curcuma (50)", cat:"visage", prix:8000, photo:"images/MOIKA.png", img:"🟡", note:5.0, avis:15, badge:"new",
     desc:"Disques nettoyants MOIKA à l'acide kojique et au curcuma (50 pads). Éclaircit, illumine et revitalise la peau. Formule quotidienne pour un teint lumineux et unifié, aide à atténuer les taches." },
 
