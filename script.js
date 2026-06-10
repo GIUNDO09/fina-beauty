@@ -399,6 +399,14 @@ function inscrireEmail(email){
   if(!email) return;
   let subs = JSON.parse(localStorage.getItem("fina_newsletter") || "[]");
   if(!subs.includes(email)){ subs.push(email); localStorage.setItem("fina_newsletter", JSON.stringify(subs)); }
+  // Envoyer l'e-mail dans la liste Brevo (via la fonction serverless) — sans bloquer l'UX
+  try {
+    fetch("/api/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email })
+    }).catch(() => {});
+  } catch (e) {}
 }
 $("#newsletter-form").addEventListener("submit", e => {
   e.preventDefault();
