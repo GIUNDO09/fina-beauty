@@ -1,9 +1,9 @@
 name: Notifier les abonnees (Brevo)
 
-# Envoie automatiquement un e-mail a toute la liste d'abonnees Brevo
-# UNIQUEMENT quand le dernier commit ajoute un produit ou une promo
-# (message commencant par "Ajout", "Nouveau" ou "Promo").
-# Necessite 3 secrets de depot : BREVO_API_KEY, BREVO_LIST_ID, BREVO_SENDER
+# Envoie automatiquement un e-mail (avec photo + nom + prix du produit)
+# a toute la liste Brevo, UNIQUEMENT quand le dernier commit ajoute un produit
+# ou une promo (message commencant par "Ajout", "Nouveau" ou "Promo").
+# Secrets requis : BREVO_API_KEY, BREVO_LIST_ID, BREVO_SENDER
 
 on:
   push:
@@ -44,21 +44,48 @@ jobs:
             exit 0
           fi
 
-          # Construire le corps HTML + le JSON de la campagne de facon sure (python)
-          PAYLOAD=$(python3 - "$MSG" "$BREVO_SENDER" "$BREVO_LIST_ID" "$SITE_URL" <<'PY'
-          import json, sys
-          msg, sender, list_id, url = sys.argv[1], sys.argv[2], int(sys.argv[3]), sys.argv[4]
+          # Recuperer les lignes ajoutees a script.js (pour retrouver le produit ajoute)
+          git diff HEAD~1 HEAD -- script.js > /tmp/diff.txt || true
+
+          # Construire le sujet + le HTML + le JSON de la campagne (python, en lisant le diff)
+          python3 - "$BREVO_SENDER" "$BREVO_LIST_ID" "$SITE_URL" "$MSG" > /tmp/payload.json <<'PY'
+          import json, sys, re
+          sender, list_id, url, msg = sys.argv[1], int(sys.argv[2]), sys.argv[3], sys.argv[4]
+          try:
+              diff = open("/tmp/diff.txt", encoding="utf-8").read()
+          except Exception:
+              diff = ""
+
+          nom = prix = photo = None
+          for line in diff.splitlines():
+              if line.startswith("+") and "nom:" in line and "photo:" in line:
+                  m = re.search(r'nom:"([^"]+)"', line)
+                  if m: nom = m.group(1)
+                  p = re.search(r'prix:(\d+)', line)
+                  if p: prix = p.group(1)
+                  ph = re.search(r'photo:"(images/[^"]+)"', line)
+                  if ph: photo = ph.group(1)
+                  break
+
+          titre = nom if nom else "Une nouveaute"
+          sujet = f"🌿 Nouveau chez FINA Beauty : {nom}" if nom else "🌿 Du nouveau chez FINA Beauty !"
+
+          img_html = f'<img src="{url}{photo}" alt="{titre}" style="width:100%;max-width:340px;border-radius:14px;display:block;margin:16px auto" />' if photo else ""
+          prix_html = f'<p style="text-align:center;font-size:22px;color:#d6aa4e;font-weight:bold;margin:6px 0">{int(prix):,} FCFA</p>'.replace(",", " ") if prix else ""
+          intro = f"Decouvrez <b>{nom}</b> dans notre boutique 💛" if nom else msg
+
           html = f"""
           <div style="font-family:Arial,sans-serif;max-width:560px;margin:auto;background:#171210;color:#ece0cd;border-radius:16px;overflow:hidden">
             <div style="background:#14100c;padding:22px;text-align:center;border-bottom:1px solid #3a2f22">
               <span style="font-family:Georgia,serif;font-size:26px;font-weight:bold;color:#f3ead8">FINA <span style="color:#d6aa4e">Beauty</span></span>
             </div>
-            <div style="padding:26px">
-              <h2 style="color:#f3ead8;font-family:Georgia,serif">Du nouveau chez FINA Beauty 🌿</h2>
-              <p style="font-size:15px;line-height:1.6">{msg}</p>
-              <p style="font-size:15px;line-height:1.6">Decouvrez vite la nouveaute sur notre boutique 💛</p>
-              <p style="text-align:center;margin:28px 0">
-                <a href="{url}" style="background:#d6aa4e;color:#171210;text-decoration:none;font-weight:bold;padding:13px 26px;border-radius:50px;display:inline-block">Voir la boutique 🛍️</a>
+            <div style="padding:24px">
+              <h2 style="color:#f3ead8;font-family:Georgia,serif;text-align:center;margin:0 0 4px">{titre}</h2>
+              {img_html}
+              {prix_html}
+              <p style="font-size:15px;line-height:1.6;text-align:center">{intro}</p>
+              <p style="text-align:center;margin:26px 0">
+                <a href="{url}" style="background:#d6aa4e;color:#171210;text-decoration:none;font-weight:bold;padding:13px 28px;border-radius:50px;display:inline-block">Voir la boutique 🛍️</a>
               </p>
             </div>
             <div style="background:#14100c;padding:16px;text-align:center;font-size:12px;color:#a89a86">
@@ -67,22 +94,21 @@ jobs:
             </div>
           </div>
           """
+
           payload = {
-            "name": f"FINA Beauty - {msg}"[:120],
-            "subject": "🌿 Du nouveau chez FINA Beauty !",
-            "sender": {"name": "FINA Beauty", "email": sender},
-            "htmlContent": html,
-            "recipients": {"listIds": [list_id]},
+              "name": f"FINA Beauty - {msg}"[:120],
+              "subject": sujet,
+              "sender": {"name": "FINA Beauty", "email": sender},
+              "htmlContent": html,
+              "recipients": {"listIds": [list_id]},
           }
           print(json.dumps(payload))
           PY
-          )
 
           echo "Creation de la campagne..."
           CREATE=$(curl -s -X POST 'https://api.brevo.com/v3/emailCampaigns' \
-            -H "api-key: $BREVO_API_KEY" \
-            -H 'Content-Type: application/json' \
-            -d "$PAYLOAD")
+            -H "api-key: $BREVO_API_KEY" -H 'Content-Type: application/json' \
+            --data-binary @/tmp/payload.json)
           echo "Reponse : $CREATE"
 
           CID=$(echo "$CREATE" | python3 -c "import sys,json;print(json.load(sys.stdin).get('id',''))")
@@ -93,4 +119,4 @@ jobs:
 
           echo "Envoi immediat de la campagne $CID..."
           curl -s -X POST "https://api.brevo.com/v3/emailCampaigns/$CID/sendNow" -H "api-key: $BREVO_API_KEY"
-          echo "E-mail envoye aux abonnees ✅"
+          echo "E-mail (avec image) envoye aux abonnees ✅"
