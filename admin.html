@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>FINA Beauty — Administration</title>
+  <link rel="icon" type="image/svg+xml" href="images/emblem.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#171210;--surf:#221b14;--line:#3a2f22;--gold:#d6aa4e;--ivory:#f3ead8;--text:#ece0cd;--muted:#a89a86;--terra:#c2714f}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Jost',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+    h1,h2,h3{font-family:'Cormorant Garamond',serif;color:var(--ivory)}
+    .gold{color:var(--gold)}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.3rem;border-radius:50px;border:none;font-family:'Jost',sans-serif;font-size:.95rem;font-weight:500;cursor:pointer;transition:.2s}
+    .btn-primary{background:var(--gold);color:#171210;font-weight:600}
+    .btn-primary:hover{filter:brightness(1.08)}
+    .btn-ghost{background:transparent;color:var(--text);border:1.5px solid var(--line)}
+    .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+    .btn-danger{background:transparent;color:#e07a5f;border:1.5px solid #5a3a30}
+    .btn-danger:hover{background:#e07a5f;color:#fff}
+    input,select,textarea{width:100%;padding:.7rem .85rem;border:1.5px solid var(--line);border-radius:10px;background:#171210;color:var(--ivory);font-family:'Jost',sans-serif;font-size:.95rem}
+    input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold)}
+    label{display:block;font-size:.82rem;font-weight:500;margin-bottom:.3rem;color:var(--muted)}
+
+    /* Connexion */
+    #login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1.2rem}
+    .login-box{background:var(--surf);border:1px solid var(--line);border-radius:20px;padding:2.4rem 2rem;max-width:380px;width:100%;text-align:center}
+    .login-box img{width:64px;margin:0 auto 1rem}
+    .login-box h1{font-size:1.8rem;margin-bottom:.3rem}
+    .login-box p{color:var(--muted);font-size:.9rem;margin-bottom:1.5rem}
+    .login-box .field{text-align:left;margin-bottom:1rem}
+    .msg{font-size:.85rem;margin-top:.8rem;min-height:1.1rem}
+    .msg.err{color:#e07a5f}.msg.ok{color:#7fc77f}
+
+    /* Tableau de bord */
+    #dash{display:none}
+    .topbar{position:sticky;top:0;background:rgba(23,18,16,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:.9rem 1.2rem;display:flex;align-items:center;justify-content:space-between;z-index:10}
+    .topbar .brand{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--ivory)}
+    .wrap{max-width:1000px;margin:0 auto;padding:1.2rem}
+    .bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.2rem;flex-wrap:wrap}
+    .bar h2{font-size:1.7rem}
+    .search{max-width:240px}
+
+    .plist{display:flex;flex-direction:column;gap:.7rem}
+    .pcard{display:flex;align-items:center;gap:.9rem;background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:.7rem .9rem}
+    .pcard .thumb{width:54px;height:54px;border-radius:10px;background:#2c2319;display:flex;align-items:center;justify-content:center;font-size:1.6rem;overflow:hidden;flex-shrink:0}
+    .pcard .thumb img{width:100%;height:100%;object-fit:cover}
+    .pcard .info{flex:1;min-width:0}
+    .pcard .info h4{font-family:'Jost',sans-serif;font-size:.98rem;font-weight:600;color:var(--ivory)}
+    .pcard .info .meta{font-size:.8rem;color:var(--muted)}
+    .pcard .info .price{color:var(--gold);font-weight:600}
+    .pcard .info .old{color:var(--muted);text-decoration:line-through;margin-right:.3rem;font-weight:400}
+    .tag{display:inline-block;font-size:.66rem;padding:1px 7px;border-radius:20px;background:#3a2f22;color:var(--gold);margin-left:.4rem;vertical-align:middle}
+    .pcard .acts{display:flex;gap:.4rem;flex-shrink:0}
+    .pcard .acts button{padding:.45rem .7rem;font-size:.82rem}
+
+    /* Modale formulaire */
+    .overlay{position:fixed;inset:0;background:rgba(23,18,16,.75);backdrop-filter:blur(4px);display:none;align-items:flex-start;justify-content:center;padding:1rem;z-index:50;overflow-y:auto}
+    .overlay.open{display:flex}
+    .form-box{background:var(--surf);border:1px solid var(--line);border-radius:18px;max-width:480px;width:100%;margin:1rem 0}
+    .form-head{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.3rem;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--surf);border-radius:18px 18px 0 0}
+    .form-head h3{font-size:1.4rem}
+    .form-body{padding:1.2rem 1.3rem}
+    .form-body .field{margin-bottom:.9rem}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+    .hint{font-size:.74rem;color:var(--muted);margin-top:.25rem}
+    .photo-prev{width:80px;height:80px;border-radius:10px;object-fit:cover;border:1px solid var(--line);margin-top:.4rem;display:none}
+    .close-x{background:none;border:none;color:var(--muted);font-size:1.3rem;cursor:pointer}
+    .center{text-align:center}
+    .spin{display:inline-block;width:16px;height:16px;border:2px solid #5a4a33;border-top-color:var(--gold);border-radius:50%;animation:sp .7s linear infinite;vertical-align:middle}
+    @keyframes sp{to{transform:rotate(360deg)}}
+    @media(max-width:520px){.row{grid-template-columns:1fr}.search{max-width:140px}}
+  </style>
+</head>
+<body>
+
+  <!-- Connexion -->
+  <div id="login">
+    <div class="login-box">
+      <img src="images/emblem.svg" alt="" />
+      <h1>FINA <span class="gold">Beauty</span></h1>
+      <p>Espace administration</p>
+      <form id="login-form">
+        <div class="field"><label>E-mail</label><input type="email" id="email" required placeholder="contact@finabeauty.store" /></div>
+        <div class="field"><label>Mot de passe</label><input type="password" id="password" required placeholder="••••••••" /></div>
+        <button type="submit" class="btn btn-primary" style="width:100%">Se connecter</button>
+        <div class="msg" id="login-msg"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Tableau de bord -->
+  <div id="dash">
+    <div class="topbar">
+      <span class="brand">FINA <span class="gold">Beauty</span> · Admin</span>
+      <div style="display:flex;gap:.5rem">
+        <a href="/" target="_blank" class="btn btn-ghost" style="padding:.5rem .9rem">Voir le site ↗</a>
+        <button class="btn btn-ghost" id="logout" style="padding:.5rem .9rem">Déconnexion</button>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="bar">
+        <h2>Mes produits <span class="gold" id="count"></span></h2>
+        <div style="display:flex;gap:.6rem;align-items:center">
+          <input class="search" id="search" placeholder="Rechercher…" />
+          <button class="btn btn-primary" id="add">+ Nouveau produit</button>
+        </div>
+      </div>
+      <div class="plist" id="plist"></div>
+    </div>
+  </div>
+
+  <!-- Modale ajout / modif -->
+  <div class="overlay" id="overlay">
+    <div class="form-box">
+      <div class="form-head">
+        <h3 id="form-title">Nouveau produit</h3>
+        <button class="close-x" id="form-close">✕</button>
+      </div>
+      <div class="form-body">
+        <form id="pform">
+          <input type="hidden" id="f-id" />
+          <div class="field"><label>Nom du produit *</label><input type="text" id="f-nom" required /></div>
+          <div class="row">
+            <div class="field"><label>Catégorie</label>
+              <select id="f-cat">
+                <option value="visage">Soins visage</option>
+                <option value="corps">Corps</option>
+                <option value="cheveux">Cheveux</option>
+                <option value="huiles">Huiles</option>
+                <option value="silhouette">Silhouette</option>
+                <option value="bijoux">Bijoux</option>
+                <option value="artisanat">Artisanat</option>
+                <option value="parfum">Parfum</option>
+                <option value="maquillage">Maquillage</option>
+              </select>
+            </div>
+            <div class="field"><label>Badge</label>
+              <select id="f-badge">
+                <option value="">Aucun</option>
+                <option value="new">Nouveau</option>
+                <option value="best">Best-seller</option>
+                <option value="promo">Promo</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="field"><label>Prix (FCFA) *</label><input type="number" id="f-prix" required min="0" /></div>
+            <div class="field"><label>Ancien prix (promo)</label><input type="number" id="f-old" min="0" /><div class="hint">Pour une promo : mets l'ancien prix barré ici.</div></div>
+          </div>
+          <div class="field"><label>Description</label><textarea id="f-desc" rows="3"></textarea></div>
+          <div class="field"><label>Photo du produit</label>
+            <input type="file" id="f-photo" accept="image/*" />
+            <div class="hint">Laisse vide pour garder la photo actuelle (en modification).</div>
+            <img class="photo-prev" id="f-prev" alt="" />
+          </div>
+          <div class="field"><label>Icône de secours (emoji)</label><input type="text" id="f-img" maxlength="4" placeholder="🛍️" /></div>
+          <div class="center" style="margin-top:1rem">
+            <button type="submit" class="btn btn-primary" id="save-btn" style="width:100%">💾 Enregistrer</button>
+            <div class="msg" id="form-msg"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="admin.js?v=1"></script>
+</body>
+</html>

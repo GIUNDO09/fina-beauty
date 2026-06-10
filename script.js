@@ -10,8 +10,8 @@ const PROMO_PCT = 0.10;           // -10%
    Pour ajouter/modifier un produit : copiez une ligne { ... }.
    img = emoji (en attendant les vraies photos) · cat = visage/cheveux/corps/maquillage/parfum
    note = sur 5 · avis = nb d'avis · badge = "new" | "best" | "promo" | null · oldPrix = ancien prix si promo */
-const PRODUITS = [
-  /* ===== VRAIS PRODUITS ===== (photo = fichier dans le dossier images/) */
+const PRODUITS_FALLBACK = [
+  /* ===== Données de secours (si Supabase indisponible) — la vraie source est Supabase ===== */
   { id:13, nom:"Savon au Nila Bleu", cat:"visage", prix:1800, oldPrix:2500, photo:"images/savon-nila-bleu.png", img:"🧼", note:5.0, avis:24, badge:"best",
     desc:"Savon de beauté artisanal à la poudre de nila bleu, fabriqué au Maroc. Unifie le teint, atténue taches, zones sombres et boutons. Nettoie le visage en profondeur et régule le sébum pour un teint éclatant. Naturel & fait main." },
 
@@ -97,6 +97,27 @@ const PRODUITS = [
     desc:"Disques nettoyants MOIKA à l'acide kojique et au curcuma (50 pads). Éclaircit, illumine et revitalise la peau. Formule quotidienne pour un teint lumineux et unifié, aide à atténuer les taches." },
 
 ];
+
+/* ===== Source des produits = Supabase (secours = tableau ci-dessus) ===== */
+let PRODUITS = PRODUITS_FALLBACK.slice();
+const SB_URL = "https://ejzthooypcffgycqmtgi.supabase.co";
+const SB_KEY = "sb_publishable_ilIf9TfT8zpfvpqrO06ZbA_BUCQbdqU";
+const SB = (window.supabase) ? window.supabase.createClient(SB_URL, SB_KEY) : null;
+async function chargerProduits(){
+  if(!SB) return;
+  try{
+    const { data, error } = await SB.from("products").select("*").order("id");
+    if(error || !data || !data.length) return;
+    PRODUITS = data.map(r => ({
+      id:r.id, nom:r.nom, cat:r.cat, prix:r.prix,
+      oldPrix:r.old_prix || undefined,
+      photo:r.photo || undefined, photos:r.photos || undefined,
+      img:r.img || "🛍️", note:r.note || 5, avis:r.avis || 0,
+      badge:r.badge || null, desc:r.description || ""
+    }));
+    afficherProduits(); renderBestSellers();
+  }catch(e){ /* on garde le secours */ }
+}
 
 /* ===== Catégories (vitrine) ===== */
 const CATEGORIES = [
@@ -498,6 +519,7 @@ document.querySelectorAll(".reveal").forEach(el => io.observe(el));
 /* ===== Init ===== */
 afficherProduits();
 renderBestSellers();
+chargerProduits();   /* recharge les produits depuis Supabase (source de vérité) */
 rendrePanier();
 rendreFavoris();
 $("#fav-count").textContent = favoris.length; if($("#bn-fav-count")) $("#bn-fav-count").textContent = favoris.length;
